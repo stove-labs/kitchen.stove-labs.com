@@ -4,7 +4,7 @@ title: Overview
 ---
 <div class="labels">
 
-`💪 Intermediate` `⏰ Self paced` `🏗 Full stack` `📝 Smart-contracts`
+`💪 Beginner friendly` `⏰ Self paced` `🏗 Full stack` `📝 Smart-contracts`
 
 </div>
 
