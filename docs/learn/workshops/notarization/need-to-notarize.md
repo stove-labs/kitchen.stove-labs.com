@@ -5,7 +5,7 @@ title: The need to notarize
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ## Time travel - Notaries and Ledgers
-The origins of notaries can be traced back to Ancient Egypt as early as ~2750 B.C. The recording of events, such as official proclamations, tax records and other documents were recorded by persons educated in the art of writing, also called *scribes*. Next to governmental functions, this function also filled the position of accountancy. Old papyrus [ledgers]() were recovered that were tracking movement in and out of storehouses. These old financial management book of sorts formed early payment recordings.
+The origins of notaries can be traced back to Ancient Egypt as early as ~2750 B.C. The recording of events, such as official proclamations, tax records and other documents were recorded by persons educated in the art of writing, also called *scribes*. Next to governmental functions, this function also filled the position of accountancy. Old papyrus ledgers were recovered that were tracking movement in and out of storehouses. These old financial management book of sorts formed early payment recordings.
 
 ![alt text](https://collectionapi.metmuseum.org/api/collection/v1/iiif/329081/711768/main-image)
 A pictographic tablet from ancient Mesopotamians, most likely documenting grain ca. 3100-2900 B.C. [image source](https://collectionapi.metmuseum.org/api/collection/v1/iiif/329081/711768/main-image).

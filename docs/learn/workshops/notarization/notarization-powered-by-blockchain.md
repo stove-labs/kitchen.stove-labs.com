@@ -75,7 +75,7 @@ Today, the majority of web services follow the traditinal client/server pattern.
 
 
 ### Solutions of tomorrow: web 3.0 + browser plugin
-The next generation builds on top of the client/server approach. Some of the data will not be stored in the server's centalized database, but in a decentralized ledger of a blockchain. As we already know, that data is publicly visible to anyone in the public blockchain network. Changing the data in the public ledger requires the user to initiate [transactions]() and most importantly to append their cryptographic approval to such a request. We also call that approval [cryptographic signature]() and will talk in detail about that below. This is important, because the signature attached to the transaction fullfills two tasks: authenticating and authorizing the write request to the decentralized ledger. 
+The next generation builds on top of the client/server approach. Some of the data will not be stored in the server's centalized database, but in a decentralized ledger of a blockchain. As we already know, that data is publicly visible to anyone in the public blockchain network. Changing the data in the public ledger requires the user to initiate [transactions](../../../wiki/transaction) and most importantly to append their cryptographic approval to such a request. We also call that approval cryptographic signature and will talk in detail about that below. This is important, because the signature attached to the transaction fullfills two tasks: authenticating and authorizing the write request to the decentralized ledger. 
 
 	┌────Web─Browser───┐                      ┌────Web─Server────┐
 	│                  │─────URL request─────▶│                  │
@@ -125,11 +125,11 @@ Understanding these properties we are convinced that a *hash acts like a digital
 
 
 
-## Accounts and Smart contracts in Tezos
+## Accounts in Tezos
 
 To control your *account* in the blockchain you need to have access to the *seed* or *secret key*. It is good practice to have a backup of the seed and therefore often a selection of words from a dictionary (seed phrases). The seed is then hashed and the resulting string of characters forms the secret key. 
 Next a so called key pair is derived using a mathematical function. As the name suggests, the key pair consists of two keys: the secret key (also *private key*) and public key. For each key there is only one other matching key that is calculated by elliptic curve multiplication in Tezos. Similar to hashing, this only goes one-way. You can derive from a secret key the corresponding public key, but not the other way around. 
-Every Tezos address starts with `tz` followed by either `1`,`2` or `3` and the *hash of the public key*. You will find more detail about addresses [here](address). 
+Every Tezos address starts with `tz` followed by either `1`,`2` or `3` and the *hash of the public key*. Take a look at the wiki to learn more about [addresses](../../../wiki/address). 
 
 
 	                                      elliptic curve                                      
@@ -161,6 +161,29 @@ bob: {
 :::important
 Remember to never share your seed or secret key with others. Otherwise someone will gain control over your account.
 :::
+
+
+## Smart contracts 
+
+A smart contract is a special type of account. Its address always starts with the letters `KT1`.  The smart contract account is created by *originating* it from an [*implicit* account](address). That's why it is also called `originated account`. It has the smart contract code attached to it. Whenever a smart contract receives a transaction (an instruction), its code is invoked and executed. The contract code is written in a Tezos specific language called [Michelson](../../../wiki/michelson). 
+
+Here's an example of Michelson code: 
+
+```
+{ parameter (or (or (nat %add) (nat %sub)) (unit %default)) ;
+  storage int ;
+  code { AMOUNT ; PUSH mutez 0 ; ASSERT_CMPEQ ; UNPAIR ;
+         IF_LEFT
+           { IF_LEFT { ADD } { SWAP ; SUB } }
+           { DROP ; DROP ; PUSH int 0 } ;
+         NIL operation ; PAIR } }
+```
+
+The contract itself contains three main parts:
+
+- **parameter** - An argument that is provided by a transaction invoking the contract.
+- **storage** - The type definition for the contract's data storage.
+- **code** - The actual Michelson code, that has the provided parameter & the current storage value in it's initial stack, and outputs a list of operations & a new storage value as it's resulting stack.
 
 ## Finalizing the process - where to enter the password?
 

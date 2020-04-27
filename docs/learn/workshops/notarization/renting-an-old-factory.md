@@ -30,7 +30,7 @@ This is a pretty common setup for a two-party contract agreement.
 
 
 ## Data
-Two paper copies of the same **lease-agreement contract**, the **hand signatures** of Alice and Bob, and finally the **stamp**   of the notary.
+Two paper copies of the same **lease-agreement contract**, the **hand signatures** of Alice and Bob, and finally the **stamp**  of the notary.
 
 ## Process
 

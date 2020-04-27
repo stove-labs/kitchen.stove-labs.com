@@ -13,12 +13,12 @@ A rogue actor could be deleting or adding digits to bank balances without others
 
 ## Digital ledgers with Blockchain
 
-In the year of 2008, the advent of Bitcoin 🌟, a completely different approach was taken with blockchain technology. Instead of restricting copying and keeping the ledger at one protected centralized place, the strategy takes a 180° turn and endorses copying of data. Every participating node has a copy of the ledger and the data is publicly accessible. All transactions are validated by each and every node. A [consensus mechanism]() and [protocol]() ensures that rules are applied in how *transactions* are processed that modify the ledger. 
+In the year of 2008, the advent of Bitcoin 🌟, a completely different approach was taken with blockchain technology. Instead of restricting copying and keeping the ledger at one protected centralized place, the strategy takes a 180° turn and endorses copying of data. Every participating node has a copy of the ledger and the data is publicly accessible. All transactions are validated by each and every node. A consensus mechanism and protocol ensures that rules are applied in how *transactions* are processed that modify the ledger. 
 
-A smart contract is not to be confused with a contract in the classical sense in law, but in blockchain a smart contract is a code of any computer program and visible to all users. It is executed as part of the decentralized blockchain protocol and once started, it cannot be stopped. Each smart contract has its own [storage](), which is basically its own ledger. Moreover, the code can define conditions and rules under which that ledger is manipulated in a decentralized fashion. This is a real gamechanger for creating trustless environments, because instead of a 3rd party writing to the ledger, it can be outsourced to a decentralized code doing that.
+A smart contract is not to be confused with a contract in the classical sense in law, but in blockchain a smart contract is a code of any computer program and visible to all users. It is executed as part of the decentralized blockchain protocol and once started, it cannot be stopped. Each smart contract has its own [storage](../../../wiki/smart-contract), which is basically its own ledger. Moreover, the code can define conditions and rules under which that ledger is manipulated in a decentralized fashion. This is a real gamechanger for creating trustless environments, because instead of a 3rd party writing to the ledger, it can be outsourced to a decentralized code doing that.
 
 :::note
-Transactions in the [context of Tezos](https://tezos.gitlab.io/user/glossary.html?#transaction) includes both: moving funds between accounts and the instruction to run the code in smart contracts.
+Transactions in the [context of Tezos](../../../wiki/transaction) includes both: moving funds between accounts and the instruction to run the code in smart contracts.
 :::
 
 ## Notarization with Blockchain
