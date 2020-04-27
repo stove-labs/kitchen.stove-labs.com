@@ -22,13 +22,21 @@ module.exports = {
     }
   ],
   wiki: [
-    'wiki/address', 
-    'wiki/hash', 
-    'wiki/implicit-account',
-    'wiki/key-pair',
-    'wiki/michelson',
-    'wiki/originated-account',
-    'wiki/smart-contract',
-    'wiki/transaction'
+    {
+      type: 'category',
+      label: 'Workstation setup',
+      items: [
+        'wiki/workstation-setup/starter-kit'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Reference / Glossary',
+      items: [
+        'wiki/address', 
+        'wiki/hash', 
+        'wiki/key-pair'
+      ]
+    }
   ]
 };

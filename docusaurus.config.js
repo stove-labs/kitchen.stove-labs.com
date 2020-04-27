@@ -7,6 +7,7 @@ module.exports = {
   organizationName: 'stove-labs', 
   projectName: 'kitchen.stove-labs.com', 
   themeConfig: {
+    disableDarkMode: true,
     navbar: {
       title: 'Stove Labs\' Kitchen',
       logo: {
@@ -27,7 +28,7 @@ module.exports = {
           position: 'left',
         },
         {
-          href: 'https://github.com/stove-labs/portal-stove-labs',
+          href: 'https://github.com/stove-labs/kitchen.stove-labs.com',
           label: 'GitHub',
           position: 'right',
         },
@@ -45,36 +46,36 @@ module.exports = {
         //     }
         //   ],
         // },
-        {
-          title: 'Community',
-          items: [
-            // {
-            //   label: 'Slack',
-            //   href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            // },
-            {
-              label: 'Telegram',
-              href: 'https://t.me/stove-labs',
-            },
-          ],
-        },
-        {
-          title: 'Social',
-          items: [
-            {
-              label: 'Medium',
-              to: 'https://medium.com/@matej.sima',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/stove-labs',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/stove_labs',
-            },
-          ],
-        },
+        // {
+        //   title: 'Community',
+        //   items: [
+        //     // {
+        //     //   label: 'Slack',
+        //     //   href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+        //     // },
+        //     {
+        //       label: 'Telegram',
+        //       href: 'https://t.me/stove_labs',
+        //     },
+        //   ],
+        // },
+        // {
+        //   title: 'Social',
+        //   items: [
+        //     {
+        //       label: 'Medium',
+        //       to: 'https://medium.com/@matej.sima',
+        //     },
+        //     {
+        //       label: 'GitHub',
+        //       href: 'https://github.com/stove-labs',
+        //     },
+        //     {
+        //       label: 'Twitter',
+        //       href: 'https://twitter.com/stove_labs',
+        //     },
+        //   ],
+        // },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Stove Labs`,
     },

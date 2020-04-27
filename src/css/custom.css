@@ -7,14 +7,22 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #6c63ff;
+  --ifm-color-primary: #536DFE;
   --ifm-color-primary-dark: #4b40ff;
-  --ifm-color-primary-darker: #3a2eff;
+  --ifm-color-secondary: rgba(238, 241, 255, .5);
+  /* --ifm-font-base-color: #2F2E41; */
+  /* --ifm-color-primary-darker: #3a2eff;
   --ifm-color-primary-darkest: #0e00f8;
   --ifm-color-primary-light: #8d86ff;
   --ifm-color-primary-lighter: #9e98ff;
   --ifm-color-primary-lightest: #d0cdff;
-  --ifm-code-font-size: 95%;
+  --ifm-code-font-size: 95%; */
+  --ifm-color-success: #35c481;
+  --ifm-color-info: #536DFE;
+  --ifm-color-warning: #FFD03B;
+  --ifm-color-danger: #F86D70;
+  --ifm-menu-color-active: var(--ifm-color-primary);
+  /* --ifm-alert-background-color:  */
 }
 
 .docusaurus-highlight-code-line {
@@ -29,4 +37,33 @@
 }
 .sidebar_node_modules-\@docusaurus-theme-classic-src-theme-DocSidebar- {
   padding-top: 0px !important;
+}
+
+.footer.footer--dark {
+  background: var( --ifm-color-primary);
+}
+
+.menu__link--sublist {
+  /* font-size: calc(var(--ifm-font-size-base) * 1.2); */
+  /* text-transform: uppercase; */
+}
+
+.labels {
+  position: relative;
+  
+}
+
+.labels code {
+  background: var(--ifm-color-primary);
+  display: inline-block;
+  margin: 3px 0px;
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 12px;
+  font-family: var(--ifm-font-family-base);
+  color: white;
+}
+
+.markdown > *:first-child.labels {
+  margin-top: -35px !important;
 }
