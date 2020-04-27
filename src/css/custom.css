@@ -23,3 +23,10 @@
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
+
+.docSidebarContainer_node_modules-\@docusaurus-theme-classic-src-theme-DocPage- {
+  top: calc(-1 * var(--ifm-navbar-height) + var(--ifm-navbar-height)) !important;
+}
+.sidebar_node_modules-\@docusaurus-theme-classic-src-theme-DocSidebar- {
+  padding-top: 0px !important;
+}
