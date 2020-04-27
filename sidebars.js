@@ -35,7 +35,12 @@ module.exports = {
       items: [
         'wiki/address', 
         'wiki/hash', 
-        'wiki/key-pair'
+        'wiki/implicit-account',
+        'wiki/key-pair',
+        'wiki/michelson',
+        'wiki/originated-account',
+        'wiki/smart-contract',
+        'wiki/transaction'
       ]
     }
   ]
