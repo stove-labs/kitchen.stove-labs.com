@@ -2,6 +2,11 @@
 id: overview
 title: Overview
 ---
+<div class="labels">
+
+`💪 Intermediate` `⏰ Self paced` `🏗 Full stack` `📝 Smart-contracts`
+
+</div>
 
 In this self-paced workshop you are going to learn how to **notarize** any digital file using the Tezos blockchain. You will leverage the properties of blockchain technology, specifically auditability and immutability, to timestamp documents *and* to use the blockchain as a decentralized *witness* verifying the signature of multiple parties.
 

@@ -12,7 +12,6 @@ Readup the definition of notarization in the [Merriam-Webster](https://www.merri
 
 Following this tutorial, you are first going to learn how to **time-stamp** a digital document. A time-stamp is a proof that a specific file existed at a certain point in time. Such a service is not new, but forms the foundation of our solution. We will learn that every file has a digital **fingerprint** that is many times smaller than the document itself. That becomes useful, because we will save that fingerprint in the blockchain [ledger](). We do not stop at this simple process, but will add features that enable multiple people to interact with the document. Like in the real-world use case of notarization!
 
-
 :::note
 The document you want to notarize can be any digital file. Examples of documents that get notarized between two or more parties are: 
 - **lease agreement**: tenant and landlord
