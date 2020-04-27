@@ -1,5 +1,5 @@
 ---
-id: doc5
+id: notarization-powered-by-blockchain
 title: Notarization powered by Blockchain
 ---
 

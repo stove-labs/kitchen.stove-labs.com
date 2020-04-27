@@ -5,6 +5,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
+import { Redirect } from '@docusaurus/router';
 
 const features = [
   {
@@ -91,4 +92,8 @@ function Home() {
   );
 }
 
-export default Home;
+function RedirectToWorkshops() {
+  return <Redirect to={useBaseUrl('/docs/learn/workshops/notarization/overview')} />
+}
+
+export default RedirectToWorkshops;

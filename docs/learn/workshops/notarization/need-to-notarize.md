@@ -1,5 +1,5 @@
 ---
-id: doc2
+id: need-to-notarize
 title: The need to notarize 
 ---
 import useBaseUrl from '@docusaurus/useBaseUrl';

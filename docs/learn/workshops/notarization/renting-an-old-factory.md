@@ -1,5 +1,5 @@
 ---
-id: doc23
+id: renting-an-old-factory
 title: 'Renting an old factory 🏭'
 ---
 

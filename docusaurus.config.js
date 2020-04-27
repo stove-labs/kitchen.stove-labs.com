@@ -15,29 +15,17 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/doc1',
-          activeBasePath: 'docs',
+          to: 'docs/learn/workshops/notarization/overview',
+          activeBasePath: 'docs/learn',
           label: 'Learn',
           position: 'left',
         },
-        // {
-        //   to: 'solutions/doc2',
-        //   activeBasePath: 'solutions',
-        //   label: 'Solutions',
-        //   position: 'left',
-        // },
         {
-          to: 'docs/address',
-          activeBasePath: 'docs',
+          to: 'docs/wiki/address',
+          activeBasePath: 'docs/wiki',
           label: 'Wiki',
           position: 'left',
         },
-        // {
-        //   to: 'references/doc2',
-        //   activeBasePath: 'references',
-        //   label: 'About us',
-        //   position: 'right',
-        // },
         {
           href: 'https://github.com/stove-labs/portal-stove-labs',
           label: 'GitHub',

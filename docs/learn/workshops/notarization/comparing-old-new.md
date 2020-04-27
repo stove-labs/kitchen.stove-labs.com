@@ -1,5 +1,5 @@
 ---
-id: doc4
+id: comparing-old-new
 title: Comparing old & new
 ---
 The following table helps us to compare the traditional approach with our blockchain powered solution.
