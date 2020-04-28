@@ -3,6 +3,8 @@ id: tezbridge
 title: TezBridge
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
 TezBridge is a web wallet that does not require any installation and acts as a connector between a decentralized application (DApp) and Tezos. Its main purpose is twofold: 
 
 1. holding your secret key(s)
@@ -39,15 +41,15 @@ Whenever you want to do a [transaction](transaction), you need to have access to
 
 Every time the DApp initiates a "write" transaction to the blockchain, it requests TezBridge to sign the transaction. It triggers a popup window with TezBridge opened and the user first needs to choose the signer.
 
-<img src="../../static/img/wiki-tezbridge/sandbox_choose_signer.png" width="400" />
+<img src={useBaseUrl("/img/wiki-tezbridge/sandbox_choose_signer.png")} width="400" />
 
 Below is an example where a local wallet manager named "Alice" is chosen as signer.
 
-<img src="../../static/img/wiki-tezbridge/sandbox_select_signer.png" width="400" />
+<img src={useBaseUrl("/img/wiki-tezbridge/sandbox_select_signer.png")} width="400" />
 
 After doing so all DApp requests are shown. The 3 options are to *Test*, *Approve* or *Reject*. 
 
-<img src="../../static/img/wiki-tezbridge/sign_request.png" width="500" />
+<img src={useBaseUrl("/img/wiki-tezbridge/sign_request.png")} width="500" />
 
 
 
@@ -56,10 +58,10 @@ After doing so all DApp requests are shown. The 3 options are to *Test*, *Approv
 
 1. Navigate to [https://www.tezbridge.com](https://www.tezbridge.com)
 2. Click on the current RPC node address
-<img src="../../static/img/wiki-tezbridge/tezbridge_change_RPC.png" width="200" />
+<img src={useBaseUrl("/img/wiki-tezbridge/tezbridge_change_RPC.png")} width="200" />
 
 3. Enter your local sandbox' address `http://localhost:8732` 
-<img src="../../static/img/wiki-tezbridge/sandbox_select_rpc.png" width="200" />
+<img src={useBaseUrl("/img/wiki-tezbridge/sandbox_select_rpc.png")} width="200" />
 
 ## How to import Alice' and Bob's account
 1. Locate `accounts.js`
@@ -93,7 +95,7 @@ bob: {
 
 	(f) Click on `confirm`
 
-<img src="../../static/img/wiki-tezbridge/sandbox_import_alice.png" width="500" />
+<img src={useBaseUrl("/img/wiki-tezbridge/sandbox_import_alice.png")} width="500" />
 
 
 
@@ -108,11 +110,11 @@ To perform transactions on the testnet `Carthage`, you need to have a XTZ or tez
 2. Confirm that you are not a robot
 3. Click on button
 
-<img src="../../static/img/wiki-tezbridge/faucet_page.png" width="300" />
+<img src={useBaseUrl("/img/wiki-tezbridge/faucet_page.png")} width="300" />
 
 4. Copy JSON
 
-<img src="../../static/img/wiki-tezbridge/faucet_json.png" width="500" />
+<img src={useBaseUrl("/img/wiki-tezbridge/faucet_json.png")} width="500" />
 
 ### Import your faucet account in TezBridge
 
@@ -120,7 +122,7 @@ To perform transactions on the testnet `Carthage`, you need to have a XTZ or tez
 
 2. Make sure that you have an RPC node selected that is connected to the testnet `Carthage`, eg. `https://carthagenet.tezos.org.ua`.
 
-<img src="../../static/img/wiki-tezbridge/import_faucet_finished.png" width="200" />
+<img src={useBaseUrl("/img/wiki-tezbridge/import_faucet_finished.png")} width="200" />
 
 3. Import faucet.json
 
@@ -136,4 +138,4 @@ To perform transactions on the testnet `Carthage`, you need to have a XTZ or tez
 
 	(f) Click on `confirm`
 
-<img src="../../static/img/wiki-tezbridge/import_faucet.png" width="500" />
+<img src={useBaseUrl("/img/wiki-tezbridge/import_faucet.png")} width="500" />
