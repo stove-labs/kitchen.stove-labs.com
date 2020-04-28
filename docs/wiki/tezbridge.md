@@ -1,0 +1,139 @@
+---
+id: tezbridge
+title: TezBridge
+---
+
+TezBridge is a web wallet that does not require any installation and acts as a connector between a decentralized application (DApp) and Tezos. Its main purpose is twofold: 
+
+1. holding your secret key(s)
+2. signing off transactions with (1) or a hardware wallet
+
+Whenever you want to do a [transaction](transaction), you need to have access to your [key-pair](key-pair). TezBridge has a built in wallet manager that does that for you. It encrypts the secret key with a password and stores it in your browser's storage. You either use TezBridge to *create a secret key* or to *import an existing key*. It supports various signing schemes and all 3 [address](address) types. Different keys are managed in separate *managers*. We can think of managers as "sub" wallets. It is also possible to use a USB-connected hardware wallet ([Ledger](https://www.ledger.com)) instead of a local manager.
+
+```	                                                  
+	        client                                    
+	                                                  
+	┌────Web─browser──────┐                           
+	│                     │                           
+	│┌──────────────────┐ │                           
+	││                  │ │                           
+	││       DApp       │ │                           
+	││                  │ │           server          
+	│└──────────────────┘ │                           
+	│       prepares      │   ┌──────────────────────┐
+	│          │          │   │                      │
+	│          ▼          │   │      Tezos Node      │
+	│┌──────────────────┐ │   │                      │
+	││     "write"      │ │   │                      │
+	││   transaction    │ │   └─────────RPC──────────┘
+	│└──────────────────┘ │              ▲            
+	│          ▲       │  │              │            
+	│          │       │  │              │            
+	│        signs     │  │              │            
+	│┌─────────────────┼┐ │              │            
+	││    TezBridge    └┼─┼─announces────┘            
+	│└──────────────────┘ │                           
+	└─────────────────────┘                           
+```
+## How to sign a transaction with TezBridge
+
+Every time the DApp initiates a "write" transaction to the blockchain, it requests TezBridge to sign the transaction. It triggers a popup window with TezBridge opened and the user first needs to choose the signer.
+
+<img src="../../static/img/wiki-tezbridge/sandbox_choose_signer.png" width="400" />
+
+Below is an example where a local wallet manager named "Alice" is chosen as signer.
+
+<img src="../../static/img/wiki-tezbridge/sandbox_select_signer.png" width="400" />
+
+After doing so all DApp requests are shown. The 3 options are to *Test*, *Approve* or *Reject*. 
+
+<img src="../../static/img/wiki-tezbridge/sign_request.png" width="500" />
+
+
+
+
+## Configuring a local RPC node
+
+1. Navigate to [https://www.tezbridge.com](https://www.tezbridge.com)
+2. Click on the current RPC node address
+<img src="../../static/img/wiki-tezbridge/tezbridge_change_RPC.png" width="200" />
+
+3. Enter your local sandbox' address `http://localhost:8732` 
+<img src="../../static/img/wiki-tezbridge/sandbox_select_rpc.png" width="200" />
+
+## How to import Alice' and Bob's account
+1. Locate `accounts.js`
+
+```
+alice: {
+        pkh: "tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb",
+        sk: "edsk3QoqBuvdamxouPhin7swCvkQNgq4jP5KZPbwWNnwdZpSpJiEbq",
+        pk: "edpkvGfYw3LyB1UcCahKQk4rF2tvbMUk8GFiTuMjL75uGXrpvKXhjn"
+    },
+bob: {
+        pkh: "tz1aSkwEot3L2kmUvcoxzjMomb9mvBNuzFK6",
+        sk: "edsk3RFfvaFaxbHx8BMtEW1rKQcPtDML3LXjNqMNLCzC3wLC1bWbAt",
+        pk: "edpkurPsQ8eUApnLUJ9ZPDvu98E8VNj4KtJa1aZr16Cr5ow5VHKnz4"
+    }
+```
+
+2. Navigate to [https://www.tezbridge.com](https://www.tezbridge.com)
+
+3. Import Alice' secret key
+
+	(a) Click on **Import Key** 
+
+	(b)	Paste secret key `edsk3QoqBuvdamxouPhin7swCvkQNgq4jP5KZPbwWNnwdZpSpJiEbq`
+
+	(c) Verify that the [address](address) is the same as you would expect
+
+	(d) Give the wallet manager a name
+
+	(e) Enter a locking password to securely encrypt the secret key in your browser's storage
+
+	(f) Click on `confirm`
+
+<img src="../../static/img/wiki-tezbridge/sandbox_import_alice.png" width="500" />
+
+
+
+
+## Importing a faucet.json
+
+To perform transactions on the testnet `Carthage`, you need to have a XTZ or tezzies in your account. Luckily, there is a so called **faucet** that gives out tezzies for free. 
+
+### Get your preloaded account from the faucet
+
+1. Visit [https://faucet.tzalpha.net](https://faucet.tzalpha.net/) 
+2. Confirm that you are not a robot
+3. Click on button
+
+<img src="../../static/img/wiki-tezbridge/faucet_page.png" width="300" />
+
+4. Copy JSON
+
+<img src="../../static/img/wiki-tezbridge/faucet_json.png" width="500" />
+
+### Import your faucet account in TezBridge
+
+1. Navigate to [https://www.tezbridge.com](https://www.tezbridge.com)
+
+2. Make sure that you have an RPC node selected that is connected to the testnet `Carthage`, eg. `https://carthagenet.tezos.org.ua`.
+
+<img src="../../static/img/wiki-tezbridge/import_faucet_finished.png" width="200" />
+
+3. Import faucet.json
+
+	(a) Click on **Import Key** 
+
+	(b)	Paste faucet.json that you have copied earlier
+
+	(c) Verify that the [address](address) is the same as you would expect
+
+	(d) Give the wallet manager a name
+
+	(e) Enter a locking password to securely encrypt the secret key in your browser's storage
+
+	(f) Click on `confirm`
+
+<img src="../../static/img/wiki-tezbridge/import_faucet.png" width="500" />

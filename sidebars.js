@@ -40,6 +40,7 @@ module.exports = {
         'wiki/michelson',
         'wiki/originated-account',
         'wiki/smart-contract',
+        'wiki/tezbridge',
         'wiki/transaction'
       ]
     }
