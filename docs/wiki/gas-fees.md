@@ -6,10 +6,10 @@ title: Gas & Fees
 A fee is paid to a *baker*, while a burn is destroyed.
 
 
-## Burn "fee" 
+## Burn
 
 Whenever a [transaction](transaction) increases the [context](context) of the blockchain, the source address must pay a burn fee. This fee is basically deflation, because no account is the recipient. Also not a *baker*. 
-The two diffrent types of burn fee are:
+The two different types of burn fee are:
 
 1. Allocation burn of 0.257 tez or 257000 mtez
    1. Activation of a new address happens when the first transaction is sent to it[^1]. 

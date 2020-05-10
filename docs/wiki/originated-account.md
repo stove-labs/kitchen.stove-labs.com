@@ -1,6 +1,6 @@
 ---
 id: originated-account
-title: Originated account
+title: Origination
 ---
 
 See [smart contract](smart-contract).

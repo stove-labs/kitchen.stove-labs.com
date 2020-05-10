@@ -1,14 +1,28 @@
 ---
 id: protocol
-title: Protocol
+title: Protocol Architecture
 ---
 
 
-## Economic Protocol
+## Blockchain Protocol
 
-Distributed consensus system that is used to decide on unconfirmed/pending transaactions. It basically enables many different computers to agree on the [state/context](context) of the system. The to be confirmed transactions are packed into a *block* that follows strict cryptographic rules. This is verified by all nodes in the system. A central feature is that the rules prevent earlier blocks to be modified, because it would invalidate alls subsequent blocks.
+### Consensus Protocol
 
-The rules of the protocol define who can write to the block. The selection of the *baker*, the entity who creates the block, happens in a competitive/propalistic (think of lottery) manner. This prevents indiviuals or groups to consecutively write blocks and to control what is included in the blockchain or replace parts. This protects the neutrality of the network.
+In a distributed system a so called *consensus protocol* is required to establish agreement on the shared [state/context](context) of the system. It is used to decide on unconfirmed/pending transactions. The to be confirmed transactions are packed into a *block* that follows strict rules. This is verified by all nodes in the system. A central feature is that the rules prevent earlier blocks to be modified, because it would invalidate all subsequent blocks.
+
+The rules of the Tezos protocol define who can write to the block and . This prevents indiviuals or groups to consecutively write blocks and to control what is included in the blockchain or replace parts. This protects the neutrality of the network. The selection of the *baker*, the entity who creates the block, happens in a competitive/propalistic (think of lottery) manner. 
 
 
 
+### Updating the protocol through self-amendments
+
+A unique feature among blockchain protocols that sets Tezos apart is *self-amendment through on-chain governance*.
+It means that the underlying protocol can be replaced without interruption and hard fork. The process of governance, deciding which proposed protocol shall be used, happens on-chain by voting of its stakeholders. This results in upgrading the protocol in a decentralized manner. The process is divided into multiple steps that result in testing periods that allows the community to provide feedback and most importantly receive the approval of the majority.
+
+## Network protocol
+
+The [gossip protocol](https://en.wikipedia.org/wiki/Gossip_protocol) is followed by the [node](node). It is responsible for all communication among nodes, such as discovering, listening and broadcasting between peers.
+
+## Shell
+
+The network shells glues together the blockchain and network protocol. It makes sure that both can communicate with each other seamlessly.

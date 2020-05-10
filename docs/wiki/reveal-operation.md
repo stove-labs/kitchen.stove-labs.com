@@ -1,6 +1,6 @@
 ---
 id: reveal-operation
-title: Reveal operation
+title: Revelation
 ---
 
 A reveal operation is special type of [operation](operations). It writes the public key of an [implicit account](implicit-account) to its [address](address) (public key hash). This operation happens when the first transaction is sent **from** the account. The public key is important for other participants to verify operations signed from the specific account.

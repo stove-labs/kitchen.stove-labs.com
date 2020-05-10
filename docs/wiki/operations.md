@@ -1,6 +1,6 @@
 ---
 id: operations
-title: Operations
+title: Overview
 ---
 
 Operations change the [context](context) of the blockchain. This transformation of the state happens at certain intervals,  whenever a new [block](block) is created. The block holds all operations.
