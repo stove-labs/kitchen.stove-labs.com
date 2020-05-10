@@ -3,7 +3,7 @@ id: signature
 title: Signatures
 ---
 
-Public [key cryptography](key-pair) and its digital signatures belong to the building blocks of a blockchain. They are always used when a piece of information needs to be written to the blockchain ledger. So called [transactions](transaction.md) carry the instructions to do so, but a digital signature is required to proof that it comes from the owner or authorized entity. In other words, the transaction initiator needs to authorize the action. The [protocol](protocol) takes care of *validating* or checking of the correctness of the signature. 
+Public [key cryptography](key-pair) and its digital signatures belong to the building blocks of a blockchain. They are always used when a piece of information needs to be written to the blockchain ledger. So called [transactions](../operations/transaction) carry the instructions to do so, but a digital signature is required to proof that it comes from the owner or authorized entity. In other words, the transaction initiator needs to authorize the action. The [protocol](../protocol) takes care of *validating* or checking of the correctness of the signature. 
 
 Consider that Alice has created two keys, a **private** and a **public** key. Those are not the same keys, but they are mathematically connected[^1]. She keeps her private key, as the name suggests, private at all times. She uses it to digitally sign a message (or transaction). Anyone with Alice' pubilc key is able to verify that it was signed with the corresponding private key. 
 
@@ -30,7 +30,7 @@ Consider that Alice has created two keys, a **private** and a **public** key. Th
 └─────────────┘             └─────────────┘               └─────────────┘
 ```
 
-In practice, the public key is [linked](key-pair.md) to an [address](address.md). The address represents an account that holds a balance. Whenever a user instructs to change its balance by performing a transfer transaction to another user, the protocol that is executed by a *node*, performs a check on the signature. In other words, it makes sure that the owner of the account authorizes the change. 
+In practice, the public key is [linked](key-pair) to an [address](address). The address represents an account that holds a balance. Whenever a user instructs to change its balance by performing a transfer transaction to another user, the protocol that is executed by a *node*, performs a check on the signature. In other words, it makes sure that the owner of the account authorizes the change. 
 
 ```
                                                                                                      ┌─────────────────┐   
@@ -70,4 +70,4 @@ In practice, the public key is [linked](key-pair.md) to an [address](address.md)
                                       └──────────────────────────────────────────┘                                         
 ```
 
-[^1]: Ed25519, Secp256k1 (ECDSA), NIST P256 (ECDSA) learn more by reading up on [addresses](address.md)
+[^1]: Ed25519, Secp256k1 (ECDSA), NIST P256 (ECDSA) learn more by reading up on [addresses](address)
