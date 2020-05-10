@@ -24,7 +24,7 @@ module.exports = {
         {
           to: 'docs/wiki/address',
           activeBasePath: 'docs/wiki',
-          label: 'Wiki',
+          label: 'Knowledge',
           position: 'left',
         },
         {

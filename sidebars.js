@@ -29,28 +29,57 @@ module.exports = {
         'wiki/workstation-setup/starter-kit'
       ]
     },
+    { type: 'category',
+    label: 'Smart Contract',
+    items: [
+      'wiki/smart-contract',
+      'wiki/michelson',
+    ]
+  
+  },
     {
       type: 'category',
-      label: 'Reference / Glossary',
+      label: 'Tezos Protocol',
       items: [
-        'wiki/address',
+        'wiki/implicit-account',
         'wiki/block', 
         'wiki/context',
-        'wiki/gas-fees',
-        'wiki/hash', 
-        'wiki/implicit-account',
-        'wiki/key-pair',
-        'wiki/michelson',
-        'wiki/operations',
-        'wiki/originated-account',
+        {
+          type: 'category',
+          label: 'Cryptography',
+          items: [
+            'wiki/address',
+            'wiki/hash', 
+            'wiki/key-pair',
+            'wiki/signature'
+          ]
+        },
         'wiki/protocol',
-        'wiki/reveal-operation',
-        'wiki/signature',
-        'wiki/smart-contract',
+     
+      'wiki/node',
+      {
+        type: 'category',
+        label: 'Operations',
+        items: [
+          'wiki/operations',
+          'wiki/gas-fees',
+          'wiki/originated-account',
+          'wiki/reveal-operation',
+          'wiki/transaction'
+        ]
+      }
+
+      ]
+    },
+    {
+      type: 'category',
+      label: 'References',
+      items: [
         'wiki/taquito',
         'wiki/tezbridge',
-        'wiki/transaction'
+
       ]
     }
+    
   ]
 };
