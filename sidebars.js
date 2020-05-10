@@ -32,8 +32,9 @@ module.exports = {
     { type: 'category',
     label: 'Smart Contract',
     items: [
-      'wiki/smart-contract',
-      'wiki/michelson',
+      'knowledge/smart_contract/smart-contract',
+      'knowledge/smart_contract/entrypoints',
+      'knowledge/smart_contract/michelson',
     ]
   
   },
@@ -41,31 +42,31 @@ module.exports = {
       type: 'category',
       label: 'Tezos Protocol',
       items: [
-        'wiki/implicit-account',
-        'wiki/block', 
-        'wiki/context',
+        'knowledge/tezos_protocol/implicit-account',
+        'knowledge/tezos_protocol/block', 
+        'knowledge/tezos_protocol/context',
         {
           type: 'category',
           label: 'Cryptography',
           items: [
-            'wiki/address',
-            'wiki/hash', 
-            'wiki/key-pair',
-            'wiki/signature'
+            'knowledge/tezos_protocol/cryptography/address',
+            'knowledge/tezos_protocol/cryptography/hash', 
+            'knowledge/tezos_protocol/cryptography/key-pair',
+            'knowledge/tezos_protocol/cryptography/signature'
           ]
         },
-        'wiki/protocol',
+        'knowledge/tezos_protocol/protocol',
      
-      'wiki/node',
+      'knowledge/tezos_protocol/node',
       {
         type: 'category',
         label: 'Operations',
         items: [
-          'wiki/operations',
-          'wiki/gas-fees',
-          'wiki/originated-account',
-          'wiki/reveal-operation',
-          'wiki/transaction'
+          'knowledge/tezos_protocol/operations/operations',
+          'knowledge/tezos_protocol/operations/gas-fees',
+          'knowledge/tezos_protocol/operations/originated-account',
+          'knowledge/tezos_protocol/operations/reveal-operation',
+          'knowledge/tezos_protocol/operations/transaction'
         ]
       }
 
@@ -75,8 +76,8 @@ module.exports = {
       type: 'category',
       label: 'References',
       items: [
-        'wiki/taquito',
-        'wiki/tezbridge',
+        'knowledge/references/taquito',
+        'knowledge/references/tezbridge',
 
       ]
     }
