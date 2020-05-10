@@ -1,0 +1,73 @@
+---
+id: signature
+title: Signatures
+---
+
+Public [key cryptography](key-pair) and its digital signatures belong to the building blocks of a blockchain. They are always used when a piece of information needs to be written to the blockchain ledger. So called [transactions](transaction.md) carry the instructions to do so, but a digital signature is required to proof that it comes from the owner or authorized entity. In other words, the transaction initiator needs to authorize the action. The [protocol](protocol) takes care of *validating* or checking of the correctness of the signature. 
+
+Consider that Alice has created two keys, a **private** and a **public** key. Those are not the same keys, but they are mathematically connected[^1]. She keeps her private key, as the name suggests, private at all times. She uses it to digitally sign a message (or transaction). Anyone with Alice' pubilc key is able to verify that it was signed with the corresponding private key. 
+
+
+```
+                          different keys, but                            
+                     ┌───mathematically linked────┐                      
+                     │                            │                      
+                     ▼                            ▼                      
+               ┌───────────┐                ┌───────────┐                
+               │           │                │           │                
+               │private key│                │public key │                
+               │           │                │           │                
+               └───────────┘                └───────────┘                
+                     │                            │                      
+                     │                            │                      
+                     │                            │                      
+┌─────────────┐      │      ┌─────────────┐       │       ┌─────────────┐
+│             │      ▼      │             │       ▼       │             │
+│             │     .─.     │             │      .─.      │             │
+│original text│────( x )───▶│ signed text │─────(   )────▶│verified text│
+│             │     `─'     │             │      `─'      │             │
+│             │   signing   │             │   verifying   │             │
+└─────────────┘             └─────────────┘               └─────────────┘
+```
+
+In practice, the public key is [linked](key-pair.md) to an [address](address.md). The address represents an account that holds a balance. Whenever a user instructs to change its balance by performing a transfer transaction to another user, the protocol that is executed by a *node*, performs a check on the signature. In other words, it makes sure that the owner of the account authorizes the change. 
+
+```
+                                                                                                     ┌─────────────────┐   
+                                                                                                     │                 │   
+                                                                                                     │   Secret Key    │   
+                                                                                                     │                 │   
+                                                                                                     │                 │   
+                                                                                                     └─────────────────┘   
+                                                                                                              │            
+                                                                                                              │            
+                                                                                                              ▼            
+┌───────────────────┐     ┌─────────────────┐      ┌─────────────────┐     ┌─────────────────┐       ┌─────────────────┐   
+│                   │     │                 │      │                 │     │                 │       │                 │   
+│Transaction in JSON│     │ Transaction in  │      │  Add watermark  │     │  Balke2b Hash   │       │  Ed25519 Sign   │   
+│                   │────▶│     Binary      │─────▶│                 │────▶│                 │─────▶ │                 │──┐
+│                   │     │                 │      │                 │     │                 │       │                 │  │
+└───────────────────┘     └─────────────────┘      └─────────────────┘     └─────────────────┘       └─────────────────┘  │
+                                   │                                                                                      │
+                                   │                                                                                      │
+                                   │                                                                                      │
+                                   │               ┌─────────────────┐                 ┌─────────────────┐                │
+                                   │               │     Signed      │                 │                 │                │
+                                   └──────────────▶│   transaction   │ ◀───────────────│    Signature    │◀───────────────┘
+                                                   │                 │                 │                 │                 
+                                                   └─────────────────┘                 └─────────────────┘                 
+                                                            │                                                              
+                                                            │                                                              
+                                                        Injection                                                          
+                                                           RPC                                                             
+                                                            │                                                              
+                                                            ▼                                                              
+                                      ┌──────────────────────────────────────────┐                                         
+                                      │ _____                _  _         _      │                                         
+                                      │|_   _|__ ______ ___ | \| |___  __| |___  │                                         
+                                      │  | |/ -_)_ / _ (_-< | .` / _ \/ _` / -_) │                                         
+                                      │  |_|\___/__\___/__/ |_|\_\___/\__,_\___| │                                         
+                                      └──────────────────────────────────────────┘                                         
+```
+
+[^1]: Ed25519, Secp256k1 (ECDSA), NIST P256 (ECDSA) learn more by reading up on [addresses](address.md)

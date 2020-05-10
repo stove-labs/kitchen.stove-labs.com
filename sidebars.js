@@ -33,13 +33,21 @@ module.exports = {
       type: 'category',
       label: 'Reference / Glossary',
       items: [
-        'wiki/address', 
+        'wiki/address',
+        'wiki/block', 
+        'wiki/context',
+        'wiki/entrypoints',
+        'wiki/gas-fees',
         'wiki/hash', 
         'wiki/implicit-account',
         'wiki/key-pair',
         'wiki/michelson',
+        'wiki/operations',
         'wiki/originated-account',
+        'wiki/protocol',
+        'wiki/signature',
         'wiki/smart-contract',
+        'wiki/taquito',
         'wiki/tezbridge',
         'wiki/transaction'
       ]
