@@ -42,9 +42,17 @@ burn = storage_difference * minimal_nanotez_per_byte
 fees >= minimal_fees +
         minimal_nanotez_per_byte * size +
         minimal_nanotez_per_gas_unit * gas
+
+in practice:
+
+fees >= 100 +
+        1 * size +
+        0.1 * gas
 ```
 
-Transfer to an inactive [implicit account](../implicit-account)
+Two examples are:
+
+Transfer to an inactive[^1] [implicit account](../implicit-account)
 ```
 gas_limit : 10200
 storage_limit : 257 bytes
@@ -54,7 +62,18 @@ opbytes : ~162
 Transfer to an active [implicit account](../implicit-account) or KT1 [originated account](originated-account)
 ```
 gas_limit : 10200
-storage_limit : 257 bytes
+storage_limit : 0 bytes
 fee : 1281 mtz
 opbytes : ~162
 ```
+
+For more information on gas & fees visit the [official documentation](https://tezos.gitlab.io/protocols/004_Pt24m4xi.html#gas-and-fees).
+
+:::tip
+According to the popular JavaScript API library [eztz](https://github.com/TezTech/eztz/blob/master/PROTO_004_FEES.md), recommended settings for transactions should be a fee of 1420mutez, a storage limit of 300 and a gas limit of 10600, meeting a variety of cases. The safest way is to simulate any operation with `--dry-run` in *tezos-client* to estimate the costs and to add a safety blanket of +100mutez.
+:::
+
+
+Recommended settings for transactions should be fee of 1420mutez, storage limit of 300, and gas limit of 10600 (to cover a variety of cases)
+
+[^1] An *inactive* account has 0 balance and is not registered as a baker.
