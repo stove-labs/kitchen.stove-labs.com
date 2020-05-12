@@ -3,7 +3,7 @@ id: operations
 title: Overview
 ---
 
-Operations change the [context](context) of the blockchain. This transformation of the state happens at certain intervals,  whenever a new [block](block) is created. The block holds all operations.
+Operations change the [context](../context) of the blockchain. This transformation of the state happens at certain intervals,  whenever a new [block](../block) is created. The block holds all operations.
 
 There are different types of operations (how it affects balance[^1]):
 * Baking type  
@@ -21,7 +21,7 @@ There are different types of operations (how it affects balance[^1]):
   * Revelation (fee)
   * Delegations (fee)
   * Transactions to transfer *tez* funds (transfer - fee)
-  * Transactions to invoke/interact with [smart contracts](smart-contract) (transfer - fee)
+  * Transactions to invoke/interact with [smart contracts](../../smart_contract/smart-contract) (transfer - fee)
   * [Originations](originated-account) of smart contracts
 
 
