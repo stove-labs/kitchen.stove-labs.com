@@ -19,4 +19,4 @@ The 3 signature schemes depend on the elliptic curves used
 
 ## Originated account
 
-The address of an _originated_ account, a [smart contract](smart-contract), always starts with `KT1`.
+The address of an _originated_ account, a [smart contract](../../smart_contract/smart-contract), always starts with `KT1`.

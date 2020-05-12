@@ -16,3 +16,8 @@ The four most important properties of hashing functions to understand are:
 2. uncorrelated - a small change in the message generates a completely different hash
 3. unique - it is infeasible for two different messages to generate the same hash
 4. one-way - it is infeasible to calculate or guess the input from the output hash
+
+
+:::note
+Tezos uses the [BLAKE2b](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE2b_algorithm) hashing algorithm.
+:::
