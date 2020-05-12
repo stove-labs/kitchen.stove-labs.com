@@ -15,8 +15,7 @@ The rules of the Tezos protocol define who can write to the block. This prevents
 
 ### Updating the protocol through self-amendments
 
-A unique feature among blockchain protocols that sets Tezos apart is *self-amendment through on-chain governance*.
-It means that the underlying protocol can be replaced without interruption and hard fork. The process of governance, deciding which proposed protocol shall be used, happens on-chain by voting of its stakeholders. This results in upgrading the protocol in a decentralized manner. The process is divided into multiple steps that result in testing periods that allows the community to provide feedback and most importantly receive the approval of the majority.
+A unique feature among blockchain protocols that sets Tezos apart is *self-amendment through on-chain governance*. It means that the underlying protocol can be replaced without interruption and hard fork. The process of governance, deciding which proposed protocol shall be used, happens on-chain by voting of its stakeholders. This results in upgrading the protocol in a decentralized manner. The process is divided into multiple steps that result in testing periods that allows the community to provide feedback and most importantly receive the approval of the majority.
 
 ## Network protocol
 
