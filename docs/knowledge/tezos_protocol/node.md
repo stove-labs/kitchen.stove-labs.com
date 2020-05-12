@@ -3,7 +3,7 @@ id: node
 title: Node
 ---
 
-Tezos blockchain network relies on *nodes* to create a trustless environment, where secure appications in form of [smart contracts](../smart_contract/smart-contract) can run.
+Tezos blockchain network relies on *nodes* to create a trustless environment, where secure applications in form of [smart contracts](../smart_contract/smart-contract) can run.
 
 A node is a server that is connected to other nodes that form the blockchain network. The server runs the Tezos specific software that has two main responsibilities:
 

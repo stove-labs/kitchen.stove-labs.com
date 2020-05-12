@@ -11,7 +11,7 @@ In summary, Taquito is used to interact with smart contracts using TypeScript, i
 * Deploy [Michelson](../smart_contract/michelson) code
 * Read the entrypoints of the smart contract
 * Read the storage of the smart contract
-* Create and forge [transcations](../tezos_protocol/operations/transaction)
+* Create and forge [transactions](../tezos_protocol/operations/transaction)
 * Announce transactions to the node
 * Create unit tests in TypeScript
 * Interface with various wallets

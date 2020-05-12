@@ -3,8 +3,7 @@ id: gas-fees
 title: Gas & Fees
 ---
 
-Every transaction on Tezos incures costs for its computation and used storage. Consider that every [node](../node) is performing the calculation and keeps a copy of the data. That's why it is necessary charge a fee to provide an incentive for node operators to run the infrastructure and to encourage "lean" code.
-
+Every transaction on Tezos incurs costs for its computation and used storage. Consider that every [node](../node) is performing the calculation and keeps a copy of the data. That's why it is necessary charge a fee to provide an incentive for node operators to run the infrastructure and to encourage "lean" code.
 
 
 :::tip 
@@ -28,7 +27,7 @@ The two different types of burn fee are:
 ## Gas
 
 In short, gas is a measure for *how long* it takes a program to compute. It is a rough equivalent of computational steps required to calculate the new [state](context). This limitation prevents programs in the form of [smart contracts](../../smart_contract/smart-contract) to run uncontrollably. 
-Consider the case of a smart contract that runs recursively. If there would be nothing to stop the programm from running, many contracts could clog up the blockchain network. That's why a gas limit needs to be paid for every transaction. If the total gas used by the smart contract computation is less or equal the gas limit, then the transaction is processed and changes are applied to the state. However, if the total gas used is higher than the gas limit paid previously, then all changes are reverted, but the gas fee is collected by the baker. In other words, the transaction is still valid, but has no effect on the state. It is the responsibility of the sender to include enough gas for the transaction.
+Consider the case of a smart contract that runs recursively. If there would be nothing to stop the program from running, many contracts could clog up the blockchain network. That's why a gas limit needs to be paid for every transaction. If the total gas used by the smart contract computation is less or equal the gas limit, then the transaction is processed and changes are applied to the state. However, if the total gas used is higher than the gas limit paid previously, then all changes are reverted, but the gas fee is collected by the baker. In other words, the transaction is still valid, but has no effect on the state. It is the responsibility of the sender to include enough gas for the transaction.
 
 ## Calculating total fee
 

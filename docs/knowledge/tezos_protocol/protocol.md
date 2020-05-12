@@ -10,7 +10,7 @@ title: Protocol Architecture
 
 In a distributed system a so called *consensus protocol* is required to establish agreement on the shared [state/context](context) of the system. It is used to decide on unconfirmed/pending transactions. The to be confirmed transactions are packed into a *block* that follows strict rules. This is verified by all nodes in the system. A central feature is that the rules prevent earlier blocks to be modified, because it would invalidate all subsequent blocks.
 
-The rules of the Tezos protocol define who can write to the block. This prevents indiviuals or groups to consecutively write blocks and to control what is included in the blockchain or replace parts. This protects the neutrality of the network. The entity who creates the block is called in Tezos **baker**. The selection of the baker happens in a competitive/propalistic manner and is rewarded with the [fees](operations/gas-fees) contained in the [block](block). This is similar to a lottery. 
+The rules of the Tezos protocol define who can write to the block. This prevents individuals or groups to consecutively write blocks and to control what is included in the blockchain or replace parts. This protects the neutrality of the network. The entity who creates the block is called in Tezos **baker**. The selection of the baker happens in a competitive/probabilistic manner and is rewarded with the [fees](operations/gas-fees) contained in the [block](block). This is similar to a lottery. 
 
 
 ### Updating the protocol through self-amendments
