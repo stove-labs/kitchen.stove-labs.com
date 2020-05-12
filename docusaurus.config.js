@@ -22,9 +22,9 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'docs/wiki/address',
-          activeBasePath: 'docs/wiki',
-          label: 'Wiki',
+          to: 'docs/knowledge/tezos_protocol/cryptography/address',
+          activeBasePath: 'docs/knowledge/tezos_protocol/cryptography',
+          label: 'Knowledge',
           position: 'left',
         },
         {

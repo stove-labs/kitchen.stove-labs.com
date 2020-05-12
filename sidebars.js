@@ -29,20 +29,58 @@ module.exports = {
         'wiki/workstation-setup/starter-kit'
       ]
     },
+    { type: 'category',
+    label: 'Smart Contract',
+    items: [
+      'knowledge/smart_contract/smart-contract',
+      'knowledge/smart_contract/entrypoints',
+      'knowledge/smart_contract/michelson',
+    ]
+  
+  },
     {
       type: 'category',
-      label: 'Reference / Glossary',
+      label: 'Tezos Protocol',
       items: [
-        'wiki/address', 
-        'wiki/hash', 
-        'wiki/implicit-account',
-        'wiki/key-pair',
-        'wiki/michelson',
-        'wiki/originated-account',
-        'wiki/smart-contract',
-        'wiki/tezbridge',
-        'wiki/transaction'
+        'knowledge/tezos_protocol/implicit-account',
+        'knowledge/tezos_protocol/block', 
+        'knowledge/tezos_protocol/context',
+        {
+          type: 'category',
+          label: 'Cryptography',
+          items: [
+            'knowledge/tezos_protocol/cryptography/address',
+            'knowledge/tezos_protocol/cryptography/hash', 
+            'knowledge/tezos_protocol/cryptography/key-pair',
+            'knowledge/tezos_protocol/cryptography/signature'
+          ]
+        },
+        'knowledge/tezos_protocol/protocol',
+     
+      'knowledge/tezos_protocol/node',
+      {
+        type: 'category',
+        label: 'Operations',
+        items: [
+          'knowledge/tezos_protocol/operations/operations',
+          'knowledge/tezos_protocol/operations/gas-fees',
+          'knowledge/tezos_protocol/operations/originated-account',
+          'knowledge/tezos_protocol/operations/reveal-operation',
+          'knowledge/tezos_protocol/operations/transaction'
+        ]
+      }
+
+      ]
+    },
+    {
+      type: 'category',
+      label: 'References',
+      items: [
+        'knowledge/references/taquito',
+        'knowledge/references/tezbridge',
+
       ]
     }
+    
   ]
 };

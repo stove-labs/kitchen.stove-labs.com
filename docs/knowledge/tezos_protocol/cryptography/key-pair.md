@@ -27,3 +27,7 @@ alice: {
         pk: "edpkvGfYw3LyB1UcCahKQk4rF2tvbMUk8GFiTuMjL75uGXrpvKXhjn"
     }
 ```
+
+:::danger
+Keep the **seed** and **secret key** always to yourself. Never share it with anyone, otherwise someone else will gain access to your account.
+:::
