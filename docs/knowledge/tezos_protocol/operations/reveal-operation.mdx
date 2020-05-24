@@ -1,0 +1,28 @@
+---
+id: reveal-operation
+title: Revelation
+---
+import Mermaid from '@theme/Mermaid';
+
+
+A reveal operation is a special type of [operation](operations). It *reveals* the public key linked to the [address](../cryptography/address) (public key hash) of an [implicit account](../implicit-account). This operation happens when the first transaction is sent **from** the account. The public key is important for other participants to verify operations signed from the specific account.
+
+Whenever a transaction is sent **to** a new implicit account, then the [context](../context) of the blockchain is increased and a fixed storage burn of 0.257ꜩ needs to be paid. More about different types of fees in the [gas & fees article](gas-fees).
+
+
+<Mermaid chart={`
+sequenceDiagram
+  autonumber
+    alt Bob's first time receiving a transaction
+        Alice->>Bob: Context is increased for 0.257ꜩ burn + fee + amount of ꜩ being sent
+    else  All transactions coming after
+        Alice->>Bob: fee + amount of ꜩ being sent
+    end
+    alt Bob sending the first time a transaction or any other operation
+      Bob->>Alice: Transaction
+      Bob-->Alice: Additional Reveal Operation publishing Bob's public key
+    else 
+    end
+`}/>
+
+

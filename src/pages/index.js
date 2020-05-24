@@ -93,7 +93,7 @@ function Home() {
 }
 
 function RedirectToWorkshops() {
-  return <Redirect to={useBaseUrl('/docs/learn/workshops/notarization/overview')} />
+  return <Redirect to={useBaseUrl('/docs/learn/workshops/notarization/theory/overview')} />
 }
 
 export default RedirectToWorkshops;

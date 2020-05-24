@@ -7,7 +7,7 @@ Every transaction on Tezos incurs costs for its computation and used storage. Co
 
 
 :::tip 
-A **fee** is paid to a *baker*, while a **burn** is destroyed. The latter has a deflationary quality for the total supply of *tez*, because no account is the recipient -  not even a *baker*.
+A **fee** is paid to a *baker*, while a **burn** is destroyed. The latter has a deflationary quality for the total supply of ꜩ, because no account is the recipient -  not even a *baker*.
 :::
 
 ## Burn
@@ -15,7 +15,7 @@ A **fee** is paid to a *baker*, while a **burn** is destroyed. The latter has a 
 Whenever a [transaction](transaction) increases the [context](../context) of the blockchain, the source address must pay a burn fee.
 The two different types of burn fee are:
 
-1. Allocation burn of 0.257 tez or 257000 mtez
+1. Allocation burn of 0.257 ꜩ (tez) or 257000 mtez
    1. Activation of a new address happens when the first transaction is sent to it[^1]. 
    2. A new [smart contract](../../smart_contract/smart-contract) is created. A new `KT1` address is [originated](originated-account).
 2. Storage burn: the size of the smart contract increases.
@@ -40,9 +40,7 @@ Simulating the operation with the *tezos-client* using the `--dry-run` flag is v
 Nevertheless it is useful to understand how the fee per operation is computed. In protocol [004_Athens](https://tezos.gitlab.io/protocols/004_Pt24m4xi.html) the constants were updated, but the formula has not changed:
 
 ```
-total_cost = safety gas + burn + fees
-
-safety gas = 100 gas units
+total_cost = burn + fees
 
 burn = storage_difference * minimal_nanotez_per_byte
 
