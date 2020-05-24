@@ -3,71 +3,59 @@ id: signature
 title: Signatures
 ---
 
-Public [key cryptography](key-pair) and its digital signatures belong to the building blocks of a blockchain. They are always used when a piece of information needs to be written to the blockchain ledger. So called [transactions](../operations/transaction) carry the instructions to do so, but a digital signature is required to proof that it comes from the owner or authorized entity. In other words, the transaction initiator needs to authorize the action. The [protocol](../protocol) takes care of *validating* or checking of the correctness of the signature. 
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import Mermaid from '@theme/Mermaid';
 
-Consider that Alice has created two keys, a **private** and a **public** key. Those are not the same keys, but they are mathematically connected[^1]. She keeps her private key, as the name suggests, private at all times. She uses it to digitally sign a message (or transaction). Anyone with Alice' pubilc key is able to verify that it was signed with the corresponding private key. 
+Public [key cryptography](key-pair) and its digital signatures belong to the building blocks of a blockchain. They are always used when a piece of information needs to be written to the blockchain ledger. So called [transactions](../operations/transaction) carry the instructions to do so, but a digital signature is required to prove that it comes from the owner or authorized entity. In other words, the transaction initiator needs to authorize the action. The [protocol](../protocol) takes care of *validating* or checking of the correctness of the signature. 
+
+Consider that Alice has created two keys, a **secret** and a **public** key. Those are not the same keys, but they are mathematically connected[^1]. She keeps her secret key, as the name suggests, private at all times. She uses it to digitally sign a message (or transaction). Anyone with Alice' pubilc key is able to verify that it was signed with the corresponding secret key. 
 
 
-```
-                          different keys, but                            
-                     ┌───mathematically linked────┐                      
-                     │                            │                      
-                     ▼                            ▼                      
-               ┌───────────┐                ┌───────────┐                
-               │           │                │           │                
-               │private key│                │public key │                
-               │           │                │           │                
-               └───────────┘                └───────────┘                
-                     │                            │                      
-                     │                            │                      
-                     │                            │                      
-┌─────────────┐      │      ┌─────────────┐       │       ┌─────────────┐
-│             │      ▼      │             │       ▼       │             │
-│             │     .─.     │             │      .─.      │             │
-│original text│────( x )───▶│ signed text │─────(   )────▶│verified text│
-│             │     `─'     │             │      `─'      │             │
-│             │   signing   │             │   verifying   │             │
-└─────────────┘             └─────────────┘               └─────────────┘
-```
+<center>
+<Mermaid chart={`
+graph TD
+	original["Original Text"]-->signing([signing])
+  signing-->signed["Signed Text"]
+  signed-->verifying([verifying])
+  subgraph payload
+  original
+  signed
+  verified
+  end
+  verifying-->verified[Verified Text]
+  subgraph key-pair
+  secret
+  public
+  
+  end
+  secret[Secret Key]-->signing
+  public[Public Key]-->verifying		
+  style key-pair fill:#FFD03B
+  style payload fill:#FFD03B
+`}/>
+</center>
 
-In practice, the public key is [linked](key-pair) to an [address](address). The address represents an account that holds a balance. Whenever a user instructs to change its balance by performing a transfer transaction to another user, the protocol that is executed by a *node*, performs a check on the signature. In other words, it makes sure that the owner of the account authorizes the change. 
+In practice, the public key is [linked](key-pair) to an *address*. The address represents an [account](../account) that holds a balance. Whenever a user instructs to change its balance by performing a transfer transaction to another user, the protocol that is executed by a *node*, performs a check on the signature. In other words, it makes sure that the owner of the account authorizes the change. 
 
-```
-                                                                                                     ┌─────────────────┐   
-                                                                                                     │                 │   
-                                                                                                     │   Secret Key    │   
-                                                                                                     │                 │   
-                                                                                                     │                 │   
-                                                                                                     └─────────────────┘   
-                                                                                                              │            
-                                                                                                              │            
-                                                                                                              ▼            
-┌───────────────────┐     ┌─────────────────┐      ┌─────────────────┐     ┌─────────────────┐       ┌─────────────────┐   
-│                   │     │                 │      │                 │     │                 │       │                 │   
-│Transaction in JSON│     │ Transaction in  │      │  Add watermark  │     │  Balke2b Hash   │       │  Ed25519 Sign   │   
-│                   │────▶│     Binary      │─────▶│                 │────▶│                 │─────▶ │                 │──┐
-│                   │     │                 │      │                 │     │                 │       │                 │  │
-└───────────────────┘     └─────────────────┘      └─────────────────┘     └─────────────────┘       └─────────────────┘  │
-                                   │                                                                                      │
-                                   │                                                                                      │
-                                   │                                                                                      │
-                                   │               ┌─────────────────┐                 ┌─────────────────┐                │
-                                   │               │     Signed      │                 │                 │                │
-                                   └──────────────▶│   transaction   │ ◀───────────────│    Signature    │◀───────────────┘
-                                                   │                 │                 │                 │                 
-                                                   └─────────────────┘                 └─────────────────┘                 
-                                                            │                                                              
-                                                            │                                                              
-                                                        Injection                                                          
-                                                           RPC                                                             
-                                                            │                                                              
-                                                            ▼                                                              
-                                      ┌──────────────────────────────────────────┐                                         
-                                      │ _____                _  _         _      │                                         
-                                      │|_   _|__ ______ ___ | \| |___  __| |___  │                                         
-                                      │  | |/ -_)_ / _ (_-< | .` / _ \/ _` / -_) │                                         
-                                      │  |_|\___/__\___/__/ |_|\_\___/\__,_\___| │                                         
-                                      └──────────────────────────────────────────┘                                         
-```
+The following diagram shows the necessary steps to create a valid [operation](../operations/oerpations). This happens on the client's side before the operation gets announced to the Tezos node. You can read up on the operation's life-cycle in the operation section [overview](../operations/operations).
 
-[^1]: Ed25519, Secp256k1 (ECDSA), NIST P256 (ECDSA) learn more by reading up on [addresses](address)
+The operation is created with the help of an [SDK](../../references/taquito) and prepared as JSON. The serialization to binary is called "forging" in Tezos. A watermark is added and then [hashed](hash) using the Balke2b algorithm. The output is signed with the secret key following the signature scheme[^1]. The signature is added[^2] to the previous operation binary and finally injected in the Tezos node using RPC. This means that the operation had been announced to the blockchain network and its status is pending, until it is included in the next block.
+
+<center>
+<Mermaid chart={`
+graph TD
+	A[Operation in JSON] -->|forge| B[Operation in Binary]
+	B --> C(Add Watermark)
+  C --> blake("Blake2b_Hash()")
+  secret[Secret Key]-->sign
+  blake --> sign("eg. Ed25519_Sign()")
+  sign --> signature[Signature]
+  signature -->|join|signed
+	B -->|join| signed[Signed Operation]
+  signed -->|inject through RPC| node("Tezos Node")	
+  style node fill:#FFD03B,stroke:#000000
+`}/>
+</center>
+
+[^1]: Ed25519, Secp256k1 (ECDSA), NIST P256 (ECDSA) learn more by reading up on [accounts](../account)
+[^2]: The source code for adding [signatures](https://gitlab.com/tezos/tezos/-/blob/master/src/lib_crypto/signature.ml) in lib_crypto 
