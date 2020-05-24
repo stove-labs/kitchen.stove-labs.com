@@ -8,9 +8,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl'
 TezBridge is a web wallet that does not require any installation and acts as a connector between a decentralized application (DApp) and Tezos. Its main purpose is twofold: 
 
 1. holding your secret key(s)
-2. signing off transactions with (1) or a hardware wallet
+2. signing off transactions with 1. or a hardware wallet
 
-Whenever you want to do a [transaction](../tezos_protocol/operations/transaction), you need to have access to your [key-pair](../tezos_protocol/cryptography/key-pair). TezBridge has a built in wallet manager that does that for you. It encrypts the secret key with a password and stores it in your browser's storage. You either use TezBridge to *create a secret key* or to *import an existing key*. It supports various signing schemes and all 3 [address](address) types. Different keys are managed in separate *managers*. We can think of managers as "sub" wallets. It is also possible to use a USB-connected hardware wallet ([Ledger](https://www.ledger.com)) instead of a local manager.
+Whenever you want to do a [transaction](../tezos_protocol/operations/transaction), you need to have access to your [key-pair](../tezos_protocol/cryptography/key-pair). TezBridge has a built in wallet manager that does that for you. It encrypts the secret key with a password and stores it in your browser's storage. You either use TezBridge to *create a secret key* or to *import an existing key*. It supports various signing schemes and all 3 [address](../tezos_protocol/account) types. Different keys are managed in separate *managers*. We can think of managers as "sub" wallets. It is also possible to use a USB-connected hardware wallet ([Ledger](https://www.ledger.com)) instead of a local manager.
 
 ```	                                                  
 	        client                                    
