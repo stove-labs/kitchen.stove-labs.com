@@ -1,3 +1,4 @@
+const path = require('path');
 module.exports = {
   title: 'Chef\'s kitchen ',
   tagline: 'Develop on Tezos with Stove Labs',
@@ -16,14 +17,14 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/learn/workshops/notarization/overview',
+          to: 'docs/learn/workshops/notarization/theory/overview',
           activeBasePath: 'docs/learn',
           label: 'Learn',
           position: 'left',
         },
         {
-          to: 'docs/knowledge/tezos_protocol/cryptography/address',
-          activeBasePath: 'docs/knowledge/tezos_protocol/cryptography',
+          to: 'docs/knowledge/tezos_protocol/account',
+          activeBasePath: 'docs/knowledge/tezos_protocol',
           label: 'Knowledge',
           position: 'left',
         },
@@ -92,6 +93,7 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        themes: [require.resolve('./src/theme/Mermaid.js')]
       },
     ],
   ],
