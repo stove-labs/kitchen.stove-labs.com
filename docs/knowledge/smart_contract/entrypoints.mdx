@@ -9,10 +9,10 @@ A [smart contract](smart-contract) can be seen as a collection of functions that
 
 ## Example from the workshop
 
-For example, in the [notarization workshop](../../learn/workshops/notarization/overview) the smart contract as seen [here](https://github.com/stove-labs/workshop-notarization/blob/dev/smart-contracts/contracts/main/notary.religo), exposes two functions with the help of entrypoints:
+In the [notarization workshop](../../learn/workshops/notarization/overview) the smart contract as seen [here](https://github.com/stove-labs/workshop-notarization/blob/dev/smart-contracts/contracts/main/notary.religo), exposes two functions with the help of entrypoints:
 
-1. NotarizeDocument(**notarizeParameter**)
-2. SignDocument(**signParameter**)
+1. NotarizeDocument(**notarizeParameter**): It takes a new document hash to notarize.
+2. SignDocument(**signParameter**): This signs an existing document.
 
 The chart below shows how both variants of the parameters are matched in the main function of the smart contract. They are passed to the two different functions *signDocument* and *notarizeDocument* and are processed there. As you can see, the exposed functions are calling within the smart contract other functions, which are not exposed to the outside.
 
@@ -36,7 +36,7 @@ graph TD
   end
 `}/>
 
-We can also look at the code responsible for this matching. The code snippet is written in [Ligo](https://www.ligolang.org) in the *ReasonLIGO* flavor.
+We can also look at the code that does this matching. It is written in [Ligo](https://www.ligolang.org) in the *ReasonLIGO* flavor. 
 
 ```reason
 /**
