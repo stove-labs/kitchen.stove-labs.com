@@ -6,9 +6,10 @@ title: Context
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import Mermaid from '@theme/Mermaid';
 
-Context is the state of the blockchain. The most common implementation of a state machine is a database. The important difference to a simple database is that a set of rules secures the state of a blockchain. The rules are codified in the [protocol](protocol). Each [operation](operations/operations) is applied to the current context. When doing so, the system moves from an old state to the new state. Remember that in Tezos context is the same as state.
+Context is the state of the blockchain. The most common implementation of a state machine is a database. The important difference to a simple database is that a set of rules secures the state of a blockchain. The rules are codified in the [protocol](protocol). 
+[Blocks](block) carry the instructions that manipulate the context. A block can be empty or have one or more [operations](operations/operations). When a block is confirmed, each [node](node) in the network applies the changes to the current context. When doing so, the system moves from an old state to the new state. Remember that in Tezos, context is the same as state.
 
-A simple example is the transfer of currency or *tez* between accounts. This requires a change to the context that tracks the balance of accounts.
+A simple example is the transfer of the currency ꜩ or *tezzies* between accounts. This requires a change to the *context* that tracks the *balance of accounts*.
 
 
 <Mermaid chart={`
@@ -16,6 +17,7 @@ graph LR
     genesis[/"(Genesis) <br> Block #1"/]-.->block100[/"Block #100"/]
     block100-->block101[/"Block #101"/]
     block101-->block102[/"Block #102"/]
+    operation["Transfer from Alice to Bob"]-->block101
 	subgraph context at height #
     context100
     context102
