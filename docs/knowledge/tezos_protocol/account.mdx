@@ -7,7 +7,7 @@ import Mermaid from '@theme/Mermaid';
 
 There are 2 types of accounts in Tezos: *implicit* and *originated* accounts. An implicit account is another name for a "regular" account, as we encounter them so frequently in blockchain. On the other hand, originated accounts are basically [smart contracts](../smart_contract/smart-contract).
 
-Both accounts share most of the same functionalities. They have account *balances* indicating how many ꜩ (tezzies) they hold, they can send and receive [transactions](operations/transaction) and call (*invoke*) smart contracts. The major difference is that originated accounts have a program code attached to it, written in [Michelson](../smart_contract/michelson) language. That code is executed, whenever the originated account receives a transaction. That makes originated accounts customizable. We will explore examples later in this article.
+Both accounts share most of the same functionalities. They have account *balances* indicating how many ꜩ (tezzies) they hold, they can send and receive [transactions](operations/transaction) and call (*invoke*) smart contracts. The major difference is that originated accounts have a program code attached to it, written in [Michelson](../smart_contract/michelson) language. That code is executed, whenever the originated account receives a transaction. That makes originated accounts customizable.
 
 
 <Mermaid chart={`
@@ -19,13 +19,14 @@ graph LR
   operation["Operation"]-->transaction
   operation-->origination
   operation-->more["..."]
-  implicit-.->|source of|originated["(Originated) Account <br/> = Smart Contract <br/> KT1..."]    
+  implicit-.->|manages|originated["(Originated) Account <br/> = Smart Contract <br/> KT1..."]    
   implicit-->|sends|operation
   implicit-->|has one|addr
   implicit-->|has one|public
   secret["Secret key"]-->|has one|public["Public key"]-->|has one|addr["Address"]
   style implicit fill:#FFD03B,stroke:#000000
   style originated fill:#FFD03B,stroke:#000000
+  style XTZ fill: #536DFE,stroke-width:1px,stroke:#333
 `}/>
 
 
@@ -45,19 +46,15 @@ The 3 signature schemes for implicit accounts depend on the elliptic curves used
 
 
 :::note 
-Implicit accounts are all backwards compatible. They can send each other tezzies without any problems.
+Implicit accounts are all backwards compatible. They can send each other ꜩ (tezzies) without any problems.
 :::
-
-
 
 
 ## Authentication
 
 Now the question arises - who controls the account? The concept of the secret-key that forms a [key-pair](cryptography/key-pair) with the public key is very important in the blockchain space. Generally speaking, [signatures](cryptography/signature) are used to *authenticate* and *authorize* between the client (the user) and the server (the blockchain node), whenever a new [operation](operations/operations) is performed. Whoever is in possession of the secret-key, gains access to the account. This is the reason the secret-key needs to be protected.
 
-This general explanation only applies to *implicit* accounts. For *originated* accounts it works differently with almost endless possibilities, because the behaviour can be programed in its smart contract code. For example, for an originated account to send tezzies, it needs to have the transfer functionality programed. For example, the code could check for *access control**. It checks whether the sender of the instruction belongs to a whitelist of addresses. This can be extended by more complex business logic. There are attempts to build so called [decentralized autonomous organizations](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) (DAOs). Please feel free to read up on this very interesting application for smart contracts, unfortunately it goes beyond the scope of this article to explain it.
+This general explanation only applies to *implicit* accounts. For *originated* accounts it works differently with almost endless possibilities, because the behaviour can be programed in its smart contract code. For example, the code could check for *access control**. It checks whether the sender of the instruction belongs to a whitelist of addresses. This can be extended by more complex business logic. There are attempts to build so called [decentralized autonomous organizations](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) (DAOs). Please feel free to read up on this very interesting application for smart contracts, unfortunately it goes beyond the scope of this article to explain it.
 
-:::danger
-Sending ꜩ (tezzies) to an originated account will get lost, if its smart contract code does not have logic implemented to transfer tezzies. The [smart contracts section](../smart_contract/smart-contract) examines a solution to automatically decline token transfers.
-:::
+
 
