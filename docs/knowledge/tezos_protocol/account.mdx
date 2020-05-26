@@ -5,7 +5,7 @@ title: Account
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import Mermaid from '@theme/Mermaid';
 
-There are 2 types of accounts in Tezos: *implicit* and *originated* accounts. An implicit account is another name for a "regular" account, as we encounter them so frequently in blockchain. On the other hand, originated accounts are basically [smart contracts](../smart_contract/smart-contract).
+There are two types of accounts in Tezos: *implicit* and *originated* accounts. An implicit account is another name for a "regular" account, as we encounter them so frequently in blockchain. On the other hand, originated accounts are basically [smart contracts](../smart_contract/smart-contract).
 
 Both accounts share most of the same functionalities. They have account *balances* indicating how many ꜩ (tezzies) they hold, they can send and receive [transactions](operations/transaction) and call (*invoke*) smart contracts. The major difference is that originated accounts have a program code attached to it, written in [Michelson](../smart_contract/michelson) language. That code is executed, whenever the originated account receives a transaction. That makes originated accounts customizable.
 
@@ -54,7 +54,7 @@ Implicit accounts are all backwards compatible. They can send each other ꜩ (te
 
 Now the question arises - who controls the account? The concept of the secret-key that forms a [key-pair](cryptography/key-pair) with the public key is very important in the blockchain space. Generally speaking, [signatures](cryptography/signature) are used to *authenticate* and *authorize* between the client (the user) and the server (the blockchain node), whenever a new [operation](operations/operations) is performed. Whoever is in possession of the secret-key, gains access to the account. This is the reason the secret-key needs to be protected.
 
-This general explanation only applies to *implicit* accounts. For *originated* accounts it works differently with almost endless possibilities, because the behaviour can be programed in its smart contract code. For example, the code could check for *access control**. It checks whether the sender of the instruction belongs to a whitelist of addresses. This can be extended by more complex business logic. There are attempts to build so called [decentralized autonomous organizations](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) (DAOs). Please feel free to read up on this very interesting application for smart contracts, unfortunately it goes beyond the scope of this article to explain it.
+This general explanation only applies to *implicit* accounts. For *originated* accounts it works differently with almost endless possibilities, because the behaviour can be programed in its smart contract code. For example, the code could check for **access control**. It checks whether the sender of the instruction belongs to a whitelist of addresses. This can be extended by complex business logic that can govern how value is distributed among many actors. There are interesting projects attempting to build a so called [decentralized autonomous organizations](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) (DAOs). Please feel free to read up on this interesting application for smart contracts, unfortunately it goes beyond the scope of this article to explain it.
 
 
 
