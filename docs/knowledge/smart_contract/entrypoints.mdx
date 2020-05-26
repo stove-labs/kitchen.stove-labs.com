@@ -1,0 +1,80 @@
+---
+id: entrypoints
+title: Entrypoints
+---
+
+import Mermaid from '@theme/Mermaid';
+
+In Tezos there are two different types of [accounts](../tezos_protocol/account): *implicit* and *originated*. The latter is an account with [Michelson](michelson) code attached to it and is basically known as [smart contract](smart-contract). It can be seen as a *collection of functions* that share and manipulate the same storage. Different to implicit accounts, originated accounts can receive more than just ꜩ in a [transaction](../tezos_protocol/operations/transaction), namely **parameters** that are consumed when executing the code. Those parameters always first arrive at the main function of the code.
+
+The challenge is how to address specific functions from the "outside", while parameters are always passed to the main function? That's why we have so called 
+**entrypoints** that work like the following: variants of parameters get matched and routed to the functions we want to address. In this way, entrypoints make functions explicitly callable from the outside of the smart contract.
+
+## Example from the workshop
+
+In the [notarization workshop](../../learn/workshops/notarization/overview) the smart contract as seen [here](https://github.com/stove-labs/workshop-notarization/blob/dev/smart-contracts/contracts/main/notary.religo), exposes two functions with the help of entrypoints:
+
+1. NotarizeDocument(**notarizeParameter**): It takes a new document hash to notarize.
+2. SignDocument(**signParameter**): This signs an existing document.
+
+The chart below shows how both variants of the parameters are matched in the main function of the smart contract. They are passed to the two different functions *signDocument* and *notarizeDocument* and are processed there. As you can see, the exposed functions are calling within the smart contract other functions, which are not exposed to the outside.
+
+<Mermaid chart={`
+graph TD
+  transaction["Transaction with parameters targets main function"]
+  transaction-->entrypoints{"Main entrypoint <br> matches varying <br> parameters <br>to function"}
+  entrypoints-->|signParameter: documentHash|SignDocument
+  SignDocument-.->signDocument
+  entrypoints-->|"notarizeParameter: (documentHash, signees)"|NotarizeDocument
+  NotarizeDocument-.->notarizeDocument
+  subgraph smart contract
+    addSign["addSignatureToDocumentSignaturesOrFail()"]
+    signDocument["signDocument(documentHash)"]
+    signDocument -->|calls internally|addSign
+    notarizeDocument["notarizeDocument(documentHash, signees)"]
+    getEmpty["getEmptydocumentSignatures()"]
+    addDocument["addDocumentHashWithSigneesToNotary()"]
+    notarizeDocument-->|calls internally|addDocument
+    addDocument-->|calls internally|getEmpty
+  end
+`}/>
+
+We can also look at the code that does this matching. It is written in [Ligo](https://www.ligolang.org) in the *ReasonLIGO* flavor. 
+
+```reason
+/**
+ * Unique set of addresses which will be able
+ * to co-sign the document.
+ */
+type signees = set(signee);
+/**
+ * Parameter for the `NotarizeDocument` entrypoint,
+ * accepting a hash to be notarized along with a set of signees.
+ */
+type notarizeParameter = {
+    documentHash: documentHash,
+    signees: signees
+};
+
+type action = 
+    /**
+     * Propose a new document hash to notarize
+     */
+    | NotarizeDocument(notarizeParameter)
+    /**
+     * Sign an existing document with a new signature
+     */
+    | SignDocument(signParameter);
+/**
+ * Main function representing the Notary contract
+ */
+let main = ((action, storage): (action, storage)) : entrypointReturn => 
+  /**
+   * Entrypoint routing
+   */
+  switch (action) {
+    | NotarizeDocument(notarizeParameter) => notarizeDocument(notarizeParameter, storage);
+    | SignDocument(signParameter) => signDocument(signParameter, storage);
+  }
+```
+

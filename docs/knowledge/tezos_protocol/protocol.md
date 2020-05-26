@@ -22,9 +22,12 @@ A unique feature among blockchain protocols that sets Tezos apart is *self-amend
 
 A simple query to a node reveals a list of protocols
 
+
 ```sh
 curl https://mainnet-tezos.giganode.io/protocols
 ```
+
+
 ```
 ["ProtoDemoNoopsDemoNoopsDemoNoopsDemoNoopsDemo6XBoYp",
 "Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P",

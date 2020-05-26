@@ -8,6 +8,10 @@ To control your [account](address) in the blockchain you need to have access to 
 Next a so called key pair is derived using a mathematical function. As the name suggests, the key pair consists of two keys: the secret key (also *private key*) and public key. For each key there is only one other matching key that is calculated by elliptic curve multiplication in Tezos. Similar to hashing, this only goes one-way. You can derive from a secret key the corresponding public key, but not the other way around. 
 Every Tezos [address](address) of an implicit account starts with `tz` followed by either `1`,`2` or `3` and the *hash of the public key*.  Originated accounts always start with capital letters `KT`.
 
+:::danger
+Keep the **seed** and **secret key** always to yourself. Never share it with anyone, otherwise someone else will gain access to your account.
+:::
+
 <center>
 <Mermaid chart={`
 graph LR
@@ -20,13 +24,6 @@ graph LR
 `}/>
 </center>
 
-:::tip
-Do not mix up *pk* with private key. Common abbreviations in the Tezos ecosystem and often seen in `.config` files are:
-* **pkh** = **p**ublic **k**ey **h**ash
-* **sk** = **s**ecret **k**ey
-* **pk** = **p**ublic **k**ey
-:::
-
 
 
 ```
@@ -37,6 +34,15 @@ alice: {
     }
 ```
 
-:::danger
-Keep the **seed** and **secret key** always to yourself. Never share it with anyone, otherwise someone else will gain access to your account.
+
+:::tip
+Do not mix up *pk* with private key. Common abbreviations in the Tezos ecosystem and often seen in `.config` files are:
+* **pkh** = **p**ublic **k**ey **h**ash
+* **sk** = **s**ecret **k**ey
+* **pk** = **p**ublic **k**ey
 :::
+
+
+
+
+

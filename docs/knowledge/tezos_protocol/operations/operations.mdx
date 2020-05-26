@@ -31,7 +31,7 @@ This is a list of different *types of operations*[^1] (how it affects balance[^2
 
 
 :::note Good to know
-Operations are uniquely identifiable with their hash. In Tezos all operation hashes start with `o` as defined in the [source code](https://gitlab.com/tezos/tezos/-/blob/master/src/lib_crypto/operation_hash.ml).
+Operations are uniquely identifiable by their hash. In Tezos all operation hashes start with `o` as defined in the [source code](https://gitlab.com/tezos/tezos/-/blob/master/src/lib_crypto/operation_hash.ml).
 :::
 
 ## Operation lifecycle
@@ -63,7 +63,7 @@ autonumber
 
 In the following overview the block does not get injected by a baker, but is exchanged among nodes. The main difference is that usually when a baker injects the block, all the information is present in the node and respectively in the mempool. In this case however, all the data is shipped to the node. You encounter this frequently when starting a node from scratch (bootstrapping). Another sub-validator called peer validator takes care of fetching the block from the distributed database shared among the p2p nodes. 
 
-
+<center>
 <Mermaid chart={`
 sequenceDiagram
   autonumber
@@ -72,6 +72,7 @@ sequenceDiagram
     Note over Peer Node: new head (leading block)
     Peer Node -> Peer Node: flush mempool
 `}/>
+</center>
 
 
 

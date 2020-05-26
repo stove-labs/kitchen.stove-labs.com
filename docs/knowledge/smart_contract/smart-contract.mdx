@@ -1,0 +1,68 @@
+---
+id: smart-contract
+title: Overview
+---
+
+import Mermaid from '@theme/Mermaid';
+
+Generally speaking, we think of a **smart contract** as a collection of functions that share and manipulate the same storage. In more detail, it is actually a special type of [account](../tezos_protocol/account). Its address always starts with the letters `KT1` and is also called **originated account**. This name comes from how it is created. It is done by *originating* it from an [*implicit* account](../tezos_protocol/implicit-account). It is essential to understand that a program code is attached to it, written in the Tezos specific language [Michelson](michelson). That code is executed or *invoked*, whenever the originated account receives a transaction. That transaction can also carry *parameters* that is taken as input for the code. This is explained in more detail in the [entrypoints](entrypoints) article. 
+
+The [notarization workshop](../learn/workshops/notarization/theory/opportunities-in-a-digital-age) provides a lot of theoretical background in why and how smart contracts can  revolutionize fundamental processes of our society. Technically speaking, a smart contract is a decentalized code that cannot be altered or stopped. The important aspect is that not only its storage, but also execution is decentralized and verifiable by the public.
+
+
+<Mermaid chart={`
+graph TD
+  account["Implicit Account<br>tz1...<br>tz2...<br>tz3..."]-->|sends|operation["Operation"]
+  account-->|owns|tez["ꜩ"]
+  smart-->|owns|tez
+  operation-->transaction["Transaction"]
+  transaction-->|contains|parameter
+  transaction-->|invokes|michelson["Michelson code"]
+  transaction-->|sends|tez
+  michelson-->|defines|storage
+  operation-->origination["Origination"]
+  origination-->|creates|smart["Originated Account<br>(Smart Contract)<br>KT1..."]
+  smart-->|has|storage
+  smart-->|has|michelson
+  michelson-->|defines|parameter
+  style tez fill: #536DFE,stroke-width:1px,stroke:#333
+  style account fill:#FFD03B,stroke:#000000
+  style smart fill:#FFD03B,stroke:#000000
+  style michelson fill:#F86D70,stroke:#000000
+  style parameter fill:#F86D70,stroke:#000000
+  style storage fill:#F86D70,stroke:#000000
+  transaction-->|targets|smart
+  account-->|manages|smart
+`}/>
+
+## Example contract declining incoming ꜩ
+
+Smart contract code opens up almost endless possibilties in customizing the behaviour of an originated account. For example, the business logic might not require the transfer of ꜩ. That's why it is *best practice* for you to implement a security mechanism that *does not* allow others to transfer ꜩ to your contract. Curious how easy it is too implement this? Below we see an example written in [ReasonLIGO](https://www.ligolang.org) that compiles down to [Michelson](michelson).
+
+```reason
+// ReasonLIGO
+type parameter = unit;
+type storage = unit;
+
+let main = ((action, store): (parameter, storage)) : (list (operation), storage) => {
+  // Check for ꜩ in the transaction that also contains the parameter
+  if (Tezos.amount > 0tez) {
+    (failwith("This contract does not accept tokens."): (list (operation), storage)); }
+  else { 
+    // here goes the business logic of the smart contract
+      (([] : list (operation)), store); };
+};
+```
+
+```reason
+# Michelson code
+{ parameter unit ;
+  storage unit ;
+  code { PUSH mutez 0 ;
+         AMOUNT ;
+         COMPARE ;
+         GT ;
+         IF { PUSH string "This contract does not accept tokens." ; FAILWITH }
+            { DUP ; CDR ; NIL operation ; PAIR } ;
+         DIP { DROP } } }
+```

@@ -47,7 +47,7 @@ module.exports = {
       label: 'Tezos Protocol',
       items: [
         'knowledge/tezos_protocol/account',
-        'knowledge/tezos_protocol/block', 
+        //'knowledge/tezos_protocol/block', 
         'knowledge/tezos_protocol/context',
         {
           type: 'category',
