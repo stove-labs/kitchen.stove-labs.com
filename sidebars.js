@@ -9,17 +9,17 @@ module.exports = {
           label: 'Notarization',
           items: [ 
             { 'Theory' : [
-            'learn/workshops/notarization/theory/overview', 
-            'learn/workshops/notarization/theory/intro',
-            'learn/workshops/notarization/theory/need-to-notarize',
-            'learn/workshops/notarization/theory/renting-an-old-factory',
-            'learn/workshops/notarization/theory/opportunities-in-a-digital-age',
-            'learn/workshops/notarization/theory/notarization-powered-by-blockchain',
-            'learn/workshops/notarization/theory/comparing-old-new',
-          ]}, 
-            // { 'Practice': [ 
-            //   'learn/workshops/notarization/practice/overview',
-            // ]}
+              'learn/workshops/notarization/theory/overview', 
+              'learn/workshops/notarization/theory/intro',
+              'learn/workshops/notarization/theory/need-to-notarize',
+              'learn/workshops/notarization/theory/renting-an-old-factory',
+              'learn/workshops/notarization/theory/opportunities-in-a-digital-age',
+              'learn/workshops/notarization/theory/notarization-powered-by-blockchain',
+              'learn/workshops/notarization/theory/comparing-old-new',
+            ]}, 
+            { 'Practice': [ 
+              'learn/workshops/notarization/practice/overview',
+            ]}
           ]
         }
       ]
@@ -84,5 +84,14 @@ module.exports = {
       ]
     }
     
+  ],
+  solutions: [
+    {
+      type: 'category',
+      label: 'TZIP-12',
+      items: [
+        'solutions/tzip-12/overview'
+      ]
+    }
   ]
 };

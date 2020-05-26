@@ -17,6 +17,11 @@ module.exports = {
       },
       links: [
         {
+          label: 'EARLY PREVIEW',
+          position: 'left',
+          className: 'early-preview animate__animated animate__tada'
+        },
+        {
           to: 'docs/learn/workshops/notarization/theory/overview',
           activeBasePath: 'docs/learn',
           label: 'Learn',
@@ -24,8 +29,14 @@ module.exports = {
         },
         {
           to: 'docs/knowledge/tezos_protocol/account',
-          activeBasePath: 'docs/knowledge/tezos_protocol',
+          activeBasePath: 'docs/knowledge',
           label: 'Knowledge',
+          position: 'left',
+        },
+        {
+          to: 'docs/solutions/tzip-12/overview',
+          activeBasePath: 'docs/solutions',
+          label: 'Solutions',
           position: 'left',
         },
         {
@@ -91,9 +102,15 @@ module.exports = {
             'https://github.com/stove-labs/learn.stove-labs.com/edit/master/website',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: [
+            require.resolve('./src/css/custom.css'),
+            require.resolve('./src/css/animate.css')
+          ],
         },
-        themes: [require.resolve('./src/theme/Mermaid.js')]
+        themes: [
+          require.resolve('./src/theme/Mermaid.js'),
+          require.resolve('./src/theme/OperationCosts.js')
+        ]
       },
     ],
   ],
