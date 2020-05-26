@@ -5,7 +5,10 @@ title: Entrypoints
 
 import Mermaid from '@theme/Mermaid';
 
-A [smart contract](smart-contract) can be seen as a collection of functions that share and manipulate the same storage. In the case of sending a [transaction](../tezos_protocol/operations/transaction) to a smart contract, it can transfer ꜩ as well as *parameters*. The parameters are then carried over to the *main function*. There, different variants of the parameters are matched and routed to predefined **entrypoints**. In this way, entrypoints make functions explicitly callable from the outside of the smart contract.
+In Tezos there are two different types of [accounts](../tezos_protocol/account): *implicit* and *originated*. The latter is an account with [Michelson](michelson) code attached to it and is basically known as [smart contract](smart-contract). It can be seen as a *collection of functions* that share and manipulate the same storage. Different to implicit accounts, originated accounts can receive more than just ꜩ in a [transaction](../tezos_protocol/operations/transaction), namely **parameters** that are consumed when executing the code. Those parameters always first arrive at the main function of the code.
+
+The challenge is how to address specific functions from the "outside", while parameters are always passed to the main function? That's why we have so called 
+**entrypoints** that work like the following: variants of parameters get matched and routed to the functions we want to address. In this way, entrypoints make functions explicitly callable from the outside of the smart contract.
 
 ## Example from the workshop
 
