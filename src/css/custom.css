@@ -4,7 +4,7 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
+ @import "animate.css"; 
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #536DFE;
@@ -33,7 +33,7 @@
 }
 
 .docSidebarContainer_node_modules-\@docusaurus-theme-classic-src-theme-DocPage- {
-  top: calc(-1 * var(--ifm-navbar-height) + var(--ifm-navbar-height)) !important;
+  top: calc(-0.70 * var(--ifm-navbar-height) + var(--ifm-navbar-height)) !important;
 }
 .sidebar_node_modules-\@docusaurus-theme-classic-src-theme-DocSidebar- {
   padding-top: 0px !important;
@@ -59,11 +59,44 @@
   margin: 3px 0px;
   padding: 6px 12px;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 13px;
   font-family: var(--ifm-font-family-base);
   color: white;
 }
 
 .markdown > *:first-child.labels {
   margin-top: -35px !important;
+}
+
+.copyButton_node_modules-\@docusaurus-theme-classic-src-theme-CodeBlock- {
+  color: white !important;
+}
+
+.navbar__title {
+  position: relative;
+  top: 0px;
+}
+
+.early-preview {
+  padding: 4px 8px;
+  font-size: 10px;
+  background: var(--ifm-color-success);
+  color: white !important;
+  transform: rotate(-2deg);
+  border-radius: var(--ifm-code-border-radius);
+  font-weight: bold;
+}
+
+.navbar-sidebar__items .early-preview {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar__items .navbar__items--right {
+    display: none;
+  }
+}
+
+.capitalize {
+  text-transform: capitalize;
 }

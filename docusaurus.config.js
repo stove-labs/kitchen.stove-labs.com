@@ -102,7 +102,7 @@ module.exports = {
             'https://github.com/stove-labs/learn.stove-labs.com/edit/master/website',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.css')
         },
         themes: [
           require.resolve('./src/theme/Mermaid.js'),
