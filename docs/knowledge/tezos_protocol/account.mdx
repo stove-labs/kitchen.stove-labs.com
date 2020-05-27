@@ -5,7 +5,7 @@ title: Account
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import Mermaid from '@theme/Mermaid';
 
-There are two types of accounts in Tezos: *implicit* and *originated* accounts. An implicit account is another name for a "regular" account, as we encounter them so frequently in blockchain. On the other hand, originated accounts are basically [smart contracts](../smart_contract/smart-contract).
+There are **two types** of accounts in Tezos: **implicit** and **originated** accounts. An implicit account is another name for a *regular* account, as we encounter them so frequently in blockchain. On the other hand, *originated* accounts are basically [smart contracts](../smart_contract/smart-contract).
 
 Both accounts share most of the same functionalities. They have account *balances* indicating how many ꜩ (tezzies) they hold, they can send and receive [transactions](operations/transaction) and call (*invoke*) smart contracts. The major difference is that originated accounts have a program code attached to it, written in [Michelson](../smart_contract/michelson) language. That code is executed, whenever the originated account receives a transaction. That makes originated accounts customizable.
 
@@ -24,9 +24,8 @@ graph LR
   implicit-->|has one|addr
   implicit-->|has one|public
   secret["Secret key"]-->|has one|public["Public key"]-->|has one|addr["Address"]
-  style implicit fill:#FFD03B,stroke:#000000
-  style originated fill:#FFD03B,stroke:#000000
-  style XTZ fill: #536DFE,stroke-width:1px,stroke:#333
+  class implicit,originated nodeWarning
+  class XTZ nodeTezos
 `}/>
 
 
