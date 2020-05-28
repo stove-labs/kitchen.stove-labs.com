@@ -6,7 +6,7 @@ title: Overview
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import Mermaid from '@theme/Mermaid';
 
-Operations change the [context](../context) of the blockchain. This transformation of the state happens at certain intervals,  whenever a new [block](../block) is created. The block holds all operations that are applied at that batch operation.
+Operations change the [context](../context) of the blockchain. This transformation of the state happens at certain intervals,  whenever a new [block](../block) is created. The **block holds all operations** that are applied at that batch operation.
 
 ## Types of operations
 
@@ -31,14 +31,14 @@ This is a list of different *types of operations*[^1] (how it affects balance[^2
 
 
 :::note Good to know
-Operations are uniquely identifiable by their hash. In Tezos all operation hashes start with `o` as defined in the [source code](https://gitlab.com/tezos/tezos/-/blob/master/src/lib_crypto/operation_hash.ml).
+Operations are uniquely identifiable by their hash. In Tezos all operation hashes start with **o** as defined in the [source code](https://gitlab.com/tezos/tezos/-/blob/master/src/lib_crypto/operation_hash.ml).
 :::
 
 ## Operation lifecycle
 
-Below is a simplified transaction diagram of the lifecycle of operations. A node receives new operations in two ways: a user announces the new operation through the RPC or the node receives it from another peer through *advertisement*. After that the operations are passed to a part of the validation system - the "pre-validator". It decides which operations are allowed to enter the *mempool*. Reasons for rejection could be that the operation does not have enough *gas*,the balance (XTZ) is too low, the voting period for the ballot is not correct, to name a few. Valid operations are then added to the mempool. It is important to know that even when receiving operations from other peers, the validation steps are nevertheless applied before proceeding to the mempool.
+Below is a simplified transaction diagram of the lifecycle of operations. A node receives **new operations in two ways**: a **user announces** the new operation through the RPC **or** the node **receives it from another peer** through *advertisement*. After that the operations are passed to a part of the **validation system** - the "pre-validator". It decides which operations are allowed to enter the *mempool*. Reasons for rejection could be that the operation does not have enough *gas*,the balance (XTZ) is too low, the voting period for the ballot is not correct, to name a few. Valid operations are then added to the mempool. It is important to know that even when receiving operations from other peers, the validation steps are nevertheless applied before proceeding to the mempool.
 
-When the time comes that the baker receives endorsements to bake (produce) a new block, the baker queries for all valid operations from the mempool. A new block gets backed by injecting it in the node. After receiving the block, the protocol checks in another part of the validation system for correctness. We will not get too much into detail of the *block* and *chain validator*, but it checks for errors[^3] such as: too many operations in a block, wrong protocol, expired chain (fork), to name just a few. After successfully passing those, a new block is created and the (block-)chain length increases by one block. Operations that had been baked are flushed from the mempool. The new block is advertised to other peer nodes.
+When the time comes that the baker receives endorsements to bake (produce) a new block, the **baker queries for all valid operations from the mempool**. A **new block** gets backed by **injecting it in the node**. After receiving the block, the protocol checks in another part of the **validation system** for correctness. We will not get too much into detail of the *block* and *chain validator*, but it checks for errors[^3] such as: too many operations in a block, wrong protocol, expired chain (fork), to name just a few. After **successfully passing** those, a **new block is created** and the (block-)chain length increases by one block. Operations that had been baked are flushed from the mempool. The **new block is advertised to other peer nodes**.
 
 
 
@@ -61,7 +61,7 @@ autonumber
 `}/>
 
 
-In the following overview the block does not get injected by a baker, but is exchanged among nodes. The main difference is that usually when a baker injects the block, all the information is present in the node and respectively in the mempool. In this case however, all the data is shipped to the node. You encounter this frequently when starting a node from scratch (bootstrapping). Another sub-validator called peer validator takes care of fetching the block from the distributed database shared among the p2p nodes. 
+In the following overview the block does not get injected by a baker, but is exchanged among nodes. The main **difference** is that usually when a baker injects the block, all the information is present in the node and respectively in the mempool. In this case however, all the **data is shipped to the node**. You encounter this frequently when **starting a node from scratch** (bootstrapping). Another sub-validator called peer validator takes care of fetching the block from the distributed database shared among the p2p nodes. 
 
 <center>
 <Mermaid chart={`

@@ -33,16 +33,9 @@ graph LR
 
 An address makes an account identifiable in the network. Just using the address, you can look up the balance of the account and its whole history of [operations](operations/operations), conveniently using a *blockchain explorer*. 
 
-For both account types the address looks slightly different. Implicit accounts always start with small letters **tz** and originated ones with capital letters **KT**. For example, `tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb` and `KT1VGRedoH7Y5VUhesSTJFK3gnXsfZpXcngf` respectively. 
+For **both** account types the **address** looks slightly **different**. Implicit accounts always start with small letters **tz** and originated ones with capital letters **KT**. For example, `tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb` and `KT1VGRedoH7Y5VUhesSTJFK3gnXsfZpXcngf` are valid examples. 
 
-The shape of the address is defined by a simple formula. It starts with `tz` or `KT` and is followed by the signature scheme *1*, *2* or *3* and the hash of the public key. As Tezos' development progressed, updates to the codebase added new cryptograhpic algorithms, hence the various signature schemes. The hashing function applied to the [public key](cryptography/key-pair) is *Blake2b*. We have a separate section devoted to *cryptography* and it explains how to get from a secret-key to the address.
-
-The 3 signature schemes for implicit accounts depend on the elliptic curves used, in particular:
-
-- `tz1` for Ed25519
-- `tz2` for Secp256k1 (ECDSA)
-- `tz3` for NIST P256 (ECDSA) 
-
+The shape of the address is defined by a simple formula. It starts with `tz` or `KT` and is followed by the signature scheme `1`, `2` or `3` and the `hash of the public key`. As Tezos' development progressed, updates to the codebase added new cryptograhpic algorithms, hence the various signature schemes.[^1] The hashing function applied to the public key is *Blake2b*. We have a separate section devoted to [cryptography](cryptography/key-pair) that explains all the steps necessary to get from a secret key to the address.
 
 :::note 
 Implicit accounts are all backwards compatible. They can send each other ꜩ (tezzies) without any problems.
@@ -51,9 +44,10 @@ Implicit accounts are all backwards compatible. They can send each other ꜩ (te
 
 ## Authentication
 
-Now the question arises - who controls the account? The concept of the secret-key that forms a [key-pair](cryptography/key-pair) with the public key is very important in the blockchain space. Generally speaking, [signatures](cryptography/signature) are used to *authenticate* and *authorize* between the client (the user) and the server (the blockchain node), whenever a new [operation](operations/operations) is performed. Whoever is in possession of the secret-key, gains access to the account. This is the reason the secret-key needs to be protected.
+Now the question arises - who controls the account? The concept of the secret key that forms a [key-pair](cryptography/key-pair) with the public key is very important in the blockchain space. Generally speaking, [**signatures**](cryptography/signature) are used to **authenticate** and **authorize** between the client (the user) and the server (the blockchain node), whenever a new [operation](operations/operations) is announced. Whoever is in possession of the secret key, gains access to the account. This is the reason why the secret-key needs to be protected.
 
-This general explanation only applies to *implicit* accounts. For *originated* accounts it works differently with almost endless possibilities, because the behaviour can be programed in its smart contract code. For example, the code could check for **access control**. It checks whether the sender of the instruction belongs to a whitelist of addresses. This can be extended by complex business logic that can govern how value is distributed among many actors. There are interesting projects attempting to build a so called [decentralized autonomous organizations](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) (DAOs). Please feel free to read up on this interesting application for smart contracts, unfortunately it goes beyond the scope of this article to explain it.
+This general explanation only applies to *implicit* accounts. For *originated* accounts it works differently with almost endless possibilities, because the behaviour can be programed in its **smart contract** code. For example, the code could perform **access control**. It checks whether the sender of the instruction belongs to a **whitelist of addresses**. This can be extended by complex business logic that can govern how value is distributed among many actors. There are interesting projects attempting to build so called [decentralized autonomous organizations](https://en.wikipedia.org/wiki/Decentralized_autonomous_organization) (DAOs). Please feel free to read up on this interesting application for smart contracts, unfortunately it goes beyond the scope of this article to explain it.
 
 
 
+[^1]: The signature schemes for implicit accounts are: `tz1` for Ed25519, `tz2` for Secp256k1 (ECDSA), `tz3` for NIST P256 (ECDSA) 

@@ -18,10 +18,11 @@ graph LR
     block100-->block101[/"Block #101"/]
     block101-->block102[/"Block #102"/]
     operation["Transfer from Alice to Bob"]-->block101
-	subgraph context at height #
+	subgraph contextBox["context at height #"]
     context100
     context102
     end
     context100[(Alice 10ꜩ)]-->block100
     context102[(Alice 8ꜩ <br> Bob 2ꜩ)]-->block102
+    style contextBox fill:#FFD03B
 `}/>
