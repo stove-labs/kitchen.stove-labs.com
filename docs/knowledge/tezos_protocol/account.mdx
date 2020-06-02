@@ -25,8 +25,16 @@ graph LR
   implicit-->|has one|public
   secret["Secret key"]-->|has one|public["Public key"]-->|has one|addr["Address"]
   class implicit,originated nodeWarning
+  class secret nodeDanger
   class XTZ nodeTezos
+  click operation,transaction,origination,more "${useBaseUrl('docs/knowledge/tezos_protocol/operations/operations')}"
+  click secret,addr,public "${useBaseUrl('docs/knowledge/tezos_protocol/cryptography/key-pair')}"
+  click originated "${useBaseUrl('docs/knowledge/tezos_protocol/smart_contract/smart-contract')}"
 `}/>
+
+:::note Chef's tip 👨‍🍳
+You can interact with the diagram by clicking on the node. It will take you to the relevant article.
+:::
 
 
 ## Address 
