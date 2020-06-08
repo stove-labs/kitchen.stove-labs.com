@@ -6,9 +6,9 @@ export default (props) => {
     <thead>
         <tr>
             <th></th>
-            <th># of tokens<sup>1</sup></th>
-            <th># of token IDs<sup>2</sup></th>
-            <th># of owners<sup>3</sup></th>
+            <th># of tokens</th>
+            <th># of token IDs</th>
+            <th># of owners</th>
             {benchmarkResults.contracts.map(name => {
                 return <th>{name}</th>
             })}
@@ -19,11 +19,11 @@ export default (props) => {
             return [
                 <tr>
                     <td className="capitalize"><b>{name}</b></td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td colspan="3" class="text-center">
+                       <i>Data below explained in a footnote<sup>1</sup></i>
+                    </td>
                     {benchmarkResults.contracts.map(name => {
-                        return <td>-</td>
+                        return <td></td>
                     })}
                 </tr>,
                 Object.keys(benchmarkResults.cases[name]).map(testGroup => {
@@ -32,9 +32,13 @@ export default (props) => {
                         <td >
                            {testGroup.split('_')[0].split('-').join(' ')}
                         </td>
-                        <td>{testData.numberOfTokens}</td>
-                        <td>{testData.numberOfTokenIDs}</td>
-                        <td>{testData.numberOfOwners}</td>
+                        {{
+                            'origination': 
+                                [<td>{testData.initialStorage.numberOfTokens} / - / -</td>,
+                                <td>{testData.initialStorage.numberOfTokenIDs} / - / -</td>,
+                                <td>{testData.initialStorage.numberOfOwners} / - / -</td>]
+                        }[name]}
+
                         {Object.keys(benchmarkResults.cases[name][testGroup]).map(contractName => {
                             const results = benchmarkResults.cases[name][testGroup][contractName].results;
                             return <td>

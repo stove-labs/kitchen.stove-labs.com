@@ -23,6 +23,7 @@
   --ifm-color-danger: #F86D70;
   --ifm-menu-color-active: var(--ifm-color-primary);
   /* --ifm-alert-background-color:  */
+  /* --ifm-container-width: calc(100vw - 300px); */
 }
 
 .docusaurus-highlight-code-line {
@@ -41,11 +42,6 @@
 
 .footer.footer--dark {
   background: var( --ifm-color-primary);
-}
-
-.menu__link--sublist {
-  /* font-size: calc(var(--ifm-font-size-base) * 1.2); */
-  /* text-transform: uppercase; */
 }
 
 .labels {
@@ -99,4 +95,8 @@
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.text-center {
+  text-align: center;
 }
