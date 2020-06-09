@@ -2,19 +2,21 @@
 id: node
 title: Node
 ---
-
+import Fetch from '@theme/Fetch';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Terminal from '@theme/Terminal';
+
+
 
 A node is a server that is connected to other nodes that form the blockchain network. The server runs the Tezos specific software that has two main responsibilities:
 
 * Handle the communication with other nodes using the [gossip protocol](https://en.wikipedia.org/wiki/Gossip_protocol)[^1]. Nodes exchange all the time information with each other, such as updating about new [operations](operations/operations) and [blocks](block).
 * Keep up-to-date the current [context](context) of the node, by applying all operations from the block to the local state. 
 
-## Protocols 📑
+## Overview of Protocols 📑
 
-### Overview of protocols
+### `/protocols`
 
 You can query the different *protocols the node supports*. You can do it with the following command from your terminal:
 
@@ -35,25 +37,8 @@ You can query the different *protocols the node supports*. You can do it with th
 curl http://localhost:8732/protocols
 ```
 
-```json
-[
-    "ProtoALphaALphaALphaALphaALphaALphaALphaALphaDdp3zK",
-    "ProtoDemoCounterDemoCounterDemoCounterDemoCou4LSpdT",
-    "ProtoDemoNoopsDemoNoopsDemoNoopsDemoNoopsDemo6XBoYp",
-    "ProtoGenesisGenesisGenesisGenesisGenesisGenesk612im",
-    "Ps6mwMrF2ER2s51cp9yYpjDcuzQjsc2yAz8bQsRgdaRxw4Fk95H",
-    "Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P",
-    "PsBABY5HQTSkA4297zNHfsZNKtxULfL18y95qb3m53QJiXGmrbU",
-    "PsBabyM1eUXZseaJdmXFApDSBqj8YBfwELoxZHHW77EMcAbbwAS",
-    "PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9oYsSXRLQEb",
-    "PsYLVpVvgbLhAhoqAkMFUo6gudkJ9weNXhUYCiLDzcUpFpkk8Wt",
-    "PsddFKi32cMJ2qPjf43Qv5GDWLDPZb3T3bF6fLKiF5HtvHNU7aP",
-    "Pt24m4xiPbLDhVgVfABUjirbmda3yohdN82Sp9FeuAXJ4eV9otd",
-    "PtBMwNZT94N7gXKw4i273CKcSaBrrBnqnt3RATExNKr9KNX2USV",
-    "PtCJ7pwoxe8JasnHY8YonnLYjcVHmhiARPJvqcC6VfHT5s8k8sY",
-    "PtYuensgYBb3G3x1hLLbCmcav8ue8Kyd2khADcL5LsT5R1hcXex"
-]
-```
+
+<Fetch URL= "http://localhost:8732/protocols" />
 
 </TabItem>
 
@@ -63,23 +48,9 @@ curl http://localhost:8732/protocols
 curl https://testnet-tezos.giganode.io/protocols
 ```
 
-```json
-[
-    "ProtoALphaALphaALphaALphaALphaALphaALphaALphaDdp3zK",
-    "ProtoDemoCounterDemoCounterDemoCounterDemoCou4LSpdT",
-    "ProtoDemoNoopsDemoNoopsDemoNoopsDemoNoopsDemo6XBoYp",
-    "ProtoGenesisGenesisGenesisGenesisGenesisGenesk612im",
-    "Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P",
-    "PsBABY5HQTSkA4297zNHfsZNKtxULfL18y95qb3m53QJiXGmrbU",
-    "PsBabyM1eUXZseaJdmXFApDSBqj8YBfwELoxZHHW77EMcAbbwAS",
-    "PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9oYsSXRLQEb",
-    "PsYLVpVvgbLhAhoqAkMFUo6gudkJ9weNXhUYCiLDzcUpFpkk8Wt",
-    "PsddFKi32cMJ2qPjf43Qv5GDWLDPZb3T3bF6fLKiF5HtvHNU7aP",
-    "Pt24m4xiPbLDhVgVfABUjirbmda3yohdN82Sp9FeuAXJ4eV9otd",
-    "PtCJ7pwoxe8JasnHY8YonnLYjcVHmhiARPJvqcC6VfHT5s8k8sY",
-    "PtYuensgYBb3G3x1hLLbCmcav8ue8Kyd2khADcL5LsT5R1hcXex"
-]
-```
+
+<Fetch URL= "https://testnet-tezos.giganode.io/protocols" />
+
 
 </TabItem>
 
@@ -88,27 +59,15 @@ curl https://testnet-tezos.giganode.io/protocols
 ```sh
 curl https://mainnet-tezos.giganode.io/protocols
 ```
-
-```json
-[
-    "ProtoDemoNoopsDemoNoopsDemoNoopsDemoNoopsDemo6XBoYp",
-    "Ps9mPmXaRzmzk35gbAYNCAw6UXdE2qoABTHbN2oEEc1qM7CwT9P",
-    "PsBABY5HQTSkA4297zNHfsZNKtxULfL18y95qb3m53QJiXGmrbU",
-    "PsBabyM1eUXZseaJdmXFApDSBqj8YBfwELoxZHHW77EMcAbbwAS",
-    "PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9oYsSXRLQEb",
-    "PsYLVpVvgbLhAhoqAkMFUo6gudkJ9weNXhUYCiLDzcUpFpkk8Wt",
-    "PsddFKi32cMJ2qPjf43Qv5GDWLDPZb3T3bF6fLKiF5HtvHNU7aP",
-    "Pt24m4xiPbLDhVgVfABUjirbmda3yohdN82Sp9FeuAXJ4eV9otd",
-    "PtCJ7pwoxe8JasnHY8YonnLYjcVHmhiARPJvqcC6VfHT5s8k8sY"
-]
-```
+<Fetch URL= "https://mainnet-tezos.giganode.io/protocols" />
 
 </TabItem>
 </Tabs>
 
-### Current protocol
+### `/chains/main/blocks/head`
 
-We are interested in identifying the **current protocol** the node is running. We can do so by performing this very  calls `/chains/main/blocks/head` and in the example below for the mainnet:
+We are interested in identifying the **current protocol** the node is running. This call is one of the most important ones in getting the current state of the blockchain:
+
 
 
 <Tabs
@@ -151,6 +110,12 @@ To further investigate the protocol **PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9o
 ```sh
 https://mainnet-tezos.giganode.io/protocols/PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9oYsSXRLQEb
 ```
+
+:::note Chef's note (clippy)
+We have organized for you all RPC calls of this wiki in a Postman collection.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ec1dc80533288e094155)
+::: 
 
 
 [^1]: Interestingly this protocol is also called *epidemic protocol*, because the way peer-to-peer communication is established mimics how a biological virus spreads.
