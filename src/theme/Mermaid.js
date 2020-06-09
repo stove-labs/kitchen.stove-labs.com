@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import mermaid from "mermaid";
-const path = require('path');
 
 // --ifm-color-success: #35c481;
 // --ifm-color-info: #536DFE;
@@ -13,7 +12,16 @@ const path = require('path');
 
 mermaid.initialize({
 	startOnLoad: true,
-	themeCSS: ".node rect { fill: #f7f8fe; stroke: #000000 } .node polygon { fill: #f7f8fe; stroke: #000000 } .node path { fill: #f7f8fe; stroke: #000000 } .nodeWarning > rect{fill:#FFD03B; stroke:#000000;} .nodeDanger > rect{fill: #F86D70; stroke:#000000;} .nodeTezos > .label{color: #ffffff} .nodeTezos > rect {fill: #536DFE}"
+	themeCSS: 
+		`
+			.node rect { fill: #f7f8fe; stroke: #000000 } 
+			.node polygon { fill: #f7f8fe; stroke: #000000 } 
+			.node path { fill: #f7f8fe; stroke: #000000 } 
+			.nodeWarning > rect{fill:#FFD03B; stroke:#000000;}
+			.nodeDanger > rect{fill: #F86D70; stroke:#000000;} 
+			.nodeTezos > .label{color: #ffffff} 
+			.nodeTezos > rect {fill: #536DFE}
+		`
 });
 
 const Mermaid = ({ chart }) => {
