@@ -15,8 +15,10 @@
     "ink": "^2.7.1",
     "javascript-terminal": "^1.0.3",
     "mermaid": "^8.5.1",
+    "pretty-format": "^26.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-live": "^2.2.2",
     "react-terminal-component": "^1.4.1"
   },
   "browserslist": {

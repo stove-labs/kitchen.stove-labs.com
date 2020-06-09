@@ -105,8 +105,11 @@ module.exports = {
           customCss: require.resolve('./src/css/custom.css')
         },
         themes: [
+          require.resolve('./src/theme/Fetch.js'),
           require.resolve('./src/theme/Mermaid.js'),
-          require.resolve('./src/theme/OperationCosts.js')
+          require.resolve('./src/theme/OperationCosts.js'),
+          require.resolve('./src/theme/Playground.js'),
+          require.resolve('./src/theme/Terminal.js')
         ]
       },
     ],
