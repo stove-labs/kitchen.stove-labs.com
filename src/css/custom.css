@@ -42,6 +42,7 @@
 
 .footer.footer--dark {
   background: var( --ifm-color-primary);
+  display: none;
 }
 
 .labels {
