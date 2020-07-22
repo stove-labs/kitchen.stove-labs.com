@@ -85,13 +85,4 @@ module.exports = {
     }
     
   ],
-  solutions: [
-    {
-      type: 'category',
-      label: 'TZIP-12',
-      items: [
-        'solutions/tzip-12/overview'
-      ]
-    }
-  ]
 };
