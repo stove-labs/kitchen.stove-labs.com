@@ -3,44 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="generator" content="Docusaurus v2.0.0-alpha.50">
-
-
-<title data-react-helmet="true">Transaction lifecycle | Chef&#x27;s kitchen </title>
-
-<meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" property="og:title" content="Transaction lifecycle | Chef&#x27;s kitchen "><meta data-react-helmet="true" name="description" content="input: webUI"><meta data-react-helmet="true" property="og:description" content="input: webUI"><meta data-react-helmet="true" property="og:url" content="https://kitchen.stove-labs.com/docs/_random/doc8">
-
-<link data-react-helmet="true" rel="shortcut icon" href="/img/logo.ico">
-
-
-<link rel="stylesheet" href="/styles.ce447e96.css">
-
-
-<link rel="preload" href="/styles.cef567eb.js" as="script">
-
-<link rel="preload" href="/runtime~main.3ecdff98.js" as="script">
-
-<link rel="preload" href="/main.eefd1c6e.js" as="script">
-
-<link rel="preload" href="/1.577e63db.js" as="script">
-
-<link rel="preload" href="/2.975a3dd7.js" as="script">
-
-<link rel="preload" href="/3.27aa9f7a.js" as="script">
-
-<link rel="preload" href="/1be78505.01f7b0f9.js" as="script">
-
-<link rel="preload" href="/20ac7829.55936cf8.js" as="script">
-
-<link rel="preload" href="/17896441.a5f0aa52.js" as="script">
-
-<link rel="preload" href="/86aabd28.7cc7967c.js" as="script">
-
+<meta name="generator" content="Docusaurus v2.0.0-alpha.58">
+<title data-react-helmet="true">Transaction lifecycle | Chef&#x27;s kitchen </title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" property="og:title" content="Transaction lifecycle | Chef&#x27;s kitchen "><meta data-react-helmet="true" name="description" content="input: webUI"><meta data-react-helmet="true" property="og:description" content="input: webUI"><meta data-react-helmet="true" property="og:url" content="https://kitchen.stove-labs.com/docs/_random/doc8"><link data-react-helmet="true" rel="shortcut icon" href="/img/logo.ico"><link data-react-helmet="true" rel="canonical" href="https://kitchen.stove-labs.com/docs/_random/doc8"><link rel="stylesheet" href="/styles.bd0e41a1.css">
+<link rel="preload" href="/styles.cb2bcad4.js" as="script">
+<link rel="preload" href="/runtime~main.3c962e46.js" as="script">
+<link rel="preload" href="/main.7951f71e.js" as="script">
+<link rel="preload" href="/3.0ce3d42c.js" as="script">
+<link rel="preload" href="/4.d9686c48.js" as="script">
+<link rel="preload" href="/64.c0a4dfa9.js" as="script">
+<link rel="preload" href="/65.30b7ef11.js" as="script">
+<link rel="preload" href="/20ac7829.51c1bbca.js" as="script">
+<link rel="preload" href="/17896441.6ee467c2.js" as="script">
+<link rel="preload" href="/86aabd28.409067a8.js" as="script">
 </head>
 <body>
-
 <div id="__docusaurus">
-<nav class="navbar navbar--light navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a aria-current="page" class="navbar__brand active" href="/"><img class="navbar__logo" src="/img/logo.png" alt="Stove Labs&#x27; Logo"><strong class="navbar__title">Stove Labs&#x27; Kitchen</strong></a><a class="navbar__item navbar__link" href="/docs/learn/workshops/notarization/overview">Learn</a><a class="navbar__item navbar__link" href="/docs/knowledge/tezos_protocol/cryptography/address">Knowledge</a></div><div class="navbar__items navbar__items--right"><a target="_blank" rel="noopener noreferrer" href="https://github.com/stove-labs/kitchen.stove-labs.com" class="navbar__item navbar__link">GitHub</a></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a aria-current="page" class="navbar__brand active" href="/"><img class="navbar__logo" src="/img/logo.png" alt="Stove Labs&#x27; Logo"><strong class="navbar__title">Stove Labs&#x27; Kitchen</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" href="/docs/learn/workshops/notarization/overview">Learn</a></li><li class="menu__list-item"><a class="menu__link" href="/docs/knowledge/tezos_protocol/cryptography/address">Knowledge</a></li><li class="menu__list-item"><a target="_blank" rel="noopener noreferrer" href="https://github.com/stove-labs/kitchen.stove-labs.com" class="menu__link">GitHub</a></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_1kjD"><main class="docMainContainer_FFX1"><div class="padding-vert--lg"><div class="container"><div class="row"><div class="col docItemCol_2GOA"><div class="docItemContainer_2cwg"><article><header><h1 class="docTitle_1vWb">Transaction lifecycle</h1></header><div class="markdown"><p>input: webUI
+<nav class="navbar navbar--light navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a class="navbar__brand" href="/"><img class="navbar__logo" src="/img/logo.png" alt="Stove Labs&#x27; Logo"><strong class="navbar__title">Stove Labs&#x27; Kitchen</strong></a><a activeclassname="navbar__link--active" class="navbar__item navbar__link early-preview animate__animated animate__tada">EARLY PREVIEW</a><a class="navbar__item navbar__link" href="/docs/learn/workshops/notarization/theory/overview">Learn</a><a class="navbar__item navbar__link" href="/docs/knowledge/tezos_protocol/account">Knowledge</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/stove-labs/kitchen.stove-labs.com" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub</a></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a class="navbar__brand" href="/"><img class="navbar__logo" src="/img/logo.png" alt="Stove Labs&#x27; Logo"><strong class="navbar__title">Stove Labs&#x27; Kitchen</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a activeclassname="navbar__link--active" class="menu__link early-preview animate__animated animate__tada">EARLY PREVIEW</a></li><li class="menu__list-item"><a class="menu__link" href="/docs/learn/workshops/notarization/theory/overview">Learn</a></li><li class="menu__list-item"><a class="menu__link" href="/docs/knowledge/tezos_protocol/account">Knowledge</a></li><li class="menu__list-item"><a href="https://github.com/stove-labs/kitchen.stove-labs.com" target="_blank" rel="noopener noreferrer" class="menu__link">GitHub</a></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_1kjD"><main class="docMainContainer_FFX1"><div class="container padding-vert--lg docItemWrapper_1cc7"><div class="row"><div class="col docItemCol_2GOA"><div class="docItemContainer_2cwg"><article><header><h1 class="docTitle_1vWb">Transaction lifecycle</h1></header><div class="markdown"><p>input: webUI
 taquito SDK prepares transaction object
 local forging
 wallet manager
@@ -48,29 +26,16 @@ tezbridge signs it
 announce to node
 baker selected -&gt; read more in wiki
 smart contract executed on all nodes
-originated account storage modified</p></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/stove-labs/learn.stove-labs.com/edit/master/website/docs/_random/doc7.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 40 40" style="margin-right:0.3em;vertical-align:sub"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_TbNY"></div></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="text--center"><div>Copyright © 2020 Stove Labs</div></div></div></footer>
-</div>
-
-<script src="/styles.cef567eb.js"></script>
-
-<script src="/runtime~main.3ecdff98.js"></script>
-
-<script src="/main.eefd1c6e.js"></script>
-
-<script src="/1.577e63db.js"></script>
-
-<script src="/2.975a3dd7.js"></script>
-
-<script src="/3.27aa9f7a.js"></script>
-
-<script src="/1be78505.01f7b0f9.js"></script>
-
-<script src="/20ac7829.55936cf8.js"></script>
-
-<script src="/17896441.a5f0aa52.js"></script>
-
-<script src="/86aabd28.7cc7967c.js"></script>
-
-
+originated account storage modified</p></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/stove-labs/learn.stove-labs.com/edit/master/website/docs/_random/doc7.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 40 40" style="margin-right:0.3em;vertical-align:sub"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"></div><div class="pagination-nav__item pagination-nav__item--next"></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_TbNY"></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="text--center"><div>Copyright © 2020 Stove Labs</div></div></div></footer></div>
+<script src="/styles.cb2bcad4.js"></script>
+<script src="/runtime~main.3c962e46.js"></script>
+<script src="/main.7951f71e.js"></script>
+<script src="/3.0ce3d42c.js"></script>
+<script src="/4.d9686c48.js"></script>
+<script src="/64.c0a4dfa9.js"></script>
+<script src="/65.30b7ef11.js"></script>
+<script src="/20ac7829.51c1bbca.js"></script>
+<script src="/17896441.6ee467c2.js"></script>
+<script src="/86aabd28.409067a8.js"></script>
 </body>
 </html>
