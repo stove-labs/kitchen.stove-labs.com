@@ -1,0 +1,184 @@
+---
+id: overview
+title: TZIP-12 Overview
+sidebar_label: Overview
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import Mermaid from '@theme/Mermaid';
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import OperationCosts from '@theme/OperationCosts';
+
+<div className="labels">
+
+`🚧 Under construction` `🏦 Tokens` `🃏 Non-Fungible` `💸 Fungible` `📝 Smart-contracts`
+
+</div>
+
+:::danger Experimental
+**Please consider experimental, don't trust your chef 👨‍🍳.**
+
+The following smart-contract implementations have not yet been audited by a 3rd party. 
+TZIP-12 standard itself has not yet been finalized, and may change in the near future.
+:::
+
+<br/>
+
+**TZIP-12** is a next generation token standard aiming to standardize integration & token data exchange between smart contracts and other involved clients. It ** supports multiple token types**, such as *Fungible*, *Non-Fungible*, *Non-Transferrable* or others.
+
+
+At Stove Labs, we have implemented a set of smart-contracts that corespond to the standardized entrypoint interface, 
+together with an *adapter based* SDK to fulfill all the client-side requirements.
+
+## Implementation status
+
+This solution is a 🚧 **work in progress** 🚧. 
+Below you can find a compatibility/progress table between the standardized entrypoints and specific implementations.
+
+||tzip-12-nft-no-big-map|tzip-12-nft
+|:----|:----|:----
+|**`transfer`**|✅|✅
+|**`balance_of`**|🚧|🚧
+|**`total_supply`**|🚧|🚧
+|**`token_metadata`**|🚧|🚧
+|**`permissions_descriptor`**|🚧|🚧
+|**`update_operators`**|🚧|🚧
+|**`is_operator`**|🚧|🚧
+|**`set_transfer_hook`**|🚧|🚧
+
+## Operational costs
+
+This section outlines rough operational costs involved when originating or interacting with one of the provided TZIP-12 contracts.
+
+:::note
+Table below showcases an approximate cost structure based on our internal benchmarking & profiling. 
+Total costs are shown in *tezzies ꜩ*, per each contract implementation. 
+
+**Chef's tip 👨‍🍳:**
+Since fee per unit of gas can be dynamic, please see the *gas consumed* & *storage used* for a more precise benchmark.
+:::
+
+import benchmarkResults from '../../../../tzip-12/benchmarks.json'
+
+<Tabs
+  defaultValue="totalCost"
+  values={[
+    {label: 'Total cost (ꜩ)', value: 'totalCost'},
+    {label: 'Gas limit (gas units)', value: 'gasLimit'},
+    {label: 'Storage limit (bytes)', value: 'storageLimit'},
+  ]}>
+  <TabItem value="totalCost"><OperationCosts displayMode='totalCost'/></TabItem>
+  <TabItem value="gasLimit"><OperationCosts displayMode='gasLimit'/></TabItem>
+  <TabItem value="storageLimit"><OperationCosts displayMode='storageLimit'/></TabItem>
+</Tabs>
+
+<b><sup>1</sup>)</b> Initial storage <b>/</b> Parameters of the benchmarked operation <b>/</b> Resulting storage
+
+
+
+## Client-side SDK
+
+Unified client-side development experience is a central component of the TZIP-12 solution. Thanks to an **adapter based Typescript/Javascript SDK**, 
+developers **don't have to worry about possible breaking changes** in new/optimized TZIP-12 implementations, as long as their SDK installation is up-to-date.
+
+Here's a quick overview of how the SDK can be used to **originate and interact** with a TZIP-12 contract:
+
+```typescript
+import { TZIP12SDK } from "@stove-labs/tzip-12-sdk";
+import { NFTToken as NFTTokenOrigination } from "@stove-labs/tzip-12-sdk/src/models/origination/nftToken"
+import { StoveLabsNFTContractAdapter, stoveLabsNFTContractAdapterFactory, Config as AdapterConfig } from "@stove-labs/tzip-12-sdk/src/adapters/stove-labs/nftAdapter/nftAdapter";
+import { Tezos } from "@taquito/taquito";
+import { InMemorySigner } from "@taquito/signer";
+import BigNumber from "bignumber.js";
+
+
+/**
+ * Mock blockchain accounts
+ */
+const alice = {
+    sk: 'edsk3QoqBuvdamxouPhin7swCvkQNgq4jP5KZPbwWNnwdZpSpJiEbq',
+    pkh: 'tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb'
+};
+
+const bob = {
+    pkh: "tz1aSkwEot3L2kmUvcoxzjMomb9mvBNuzFK6",
+    sk: "edsk3RFfvaFaxbHx8BMtEW1rKQcPtDML3LXjNqMNLCzC3wLC1bWbAt",
+    pk: "edpkurPsQ8eUApnLUJ9ZPDvu98E8VNj4KtJa1aZr16Cr5ow5VHKnz4"
+};
+
+
+/**
+ * Initial configuration
+ */
+const rpc = 'http://localhost:8732';
+const signer = new InMemorySigner(alice.sk);
+Tezos.setProvider({ rpc, signer });
+
+const adapterConfig: AdapterConfig = {
+    indexerNetwork: 'sandboxnet',
+    indexerUrl: 'http://localhost:42000'
+};
+
+
+/**
+ * Initialize the SDK with an appropriate adapter
+ */
+let TZIP12 = new TZIP12SDK<StoveLabsNFTContractAdapter>({
+    adapterFactory: stoveLabsNFTContractAdapterFactory(adapterConfig),
+    tezos: Tezos
+});
+
+
+/**
+ * Originate the SDK, using the provided adapter's contract code.
+ * Fill the contract with initial data / tokens + owners.
+ */
+const originationOperation = await TZIP12.originate({
+    tokens: [
+        NFTTokenOrigination
+            .withId(0)
+            .setOwner(alice.pkh),
+        NFTTokenOrigination
+            .withId(1)
+            .setOwner(alice.pkh)
+    ]
+});
+await originationOperation.confirmation(1);
+
+
+/**
+ * Once the contract is deployed, re-initialize the SDK
+ */
+const myTZIP12 = await TZIP12.at(originationOperation.contractAddress!);
+
+
+/**
+ * Transfer token `0` from `alice` to `bob`
+ */
+let transactionOperation = await myTZIP12.getTokenWithId(0)
+    .transfer({
+        amount: new BigNumber(0),
+        from: alice.pkh,
+        to: bob.pkh
+    }).send();
+await transactionOperation.confirmation(1);
+
+
+/**
+ * Confirm that `alice` does not hold any tokens with id `0`
+ */
+const balanceAlice = (await myTZIP12.getTokenWithId(0)
+    .getBalanceForOwner(alice.pkh))
+    .toNumber();
+
+console.log(balanceAlice);
+```
+
+## Useful links
+
+- [TZIP-12 implementation repository by Stove Labs](https://github.com/stove-labs/tzip-12)
+- [TZIP-12 SDK](https://github.com/stove-labs/tzip-12-sdk)
+- [Original TZIP-12 proposal](https://gitlab.com/tzip/tzip/-/blob/master/proposals/tzip-12/tzip-12.md)
