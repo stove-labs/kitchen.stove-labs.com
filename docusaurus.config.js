@@ -34,12 +34,6 @@ module.exports = {
           position: 'left',
         },
         {
-          to: 'docs/solutions/tzip-12/overview',
-          activeBasePath: 'docs/solutions',
-          label: 'Solutions',
-          position: 'left',
-        },
-        {
           href: 'https://github.com/stove-labs/kitchen.stove-labs.com',
           label: 'GitHub',
           position: 'right',
@@ -107,7 +101,6 @@ module.exports = {
         themes: [
           require.resolve('./src/theme/Fetch.js'),
           require.resolve('./src/theme/Mermaid.js'),
-          require.resolve('./src/theme/OperationCosts.js'),
           require.resolve('./src/theme/Playground.js'),
           require.resolve('./src/theme/Terminal.js')
         ]
