@@ -79,8 +79,7 @@ module.exports = {
       label: 'References',
       items: [
         'knowledge/references/taquito',
-        'knowledge/references/tezbridge',
-
+        //'knowledge/references/tezbridge',
       ]
     }
     

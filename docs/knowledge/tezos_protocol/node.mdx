@@ -1,0 +1,121 @@
+--- 
+id: node
+title: Node
+---
+import Fetch from '@theme/Fetch';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Terminal from '@theme/Terminal';
+
+
+
+A node is a server that is connected to other nodes that form the blockchain network. The server runs the Tezos specific software that has two main responsibilities:
+
+* Handle the communication with other nodes using the [gossip protocol](https://en.wikipedia.org/wiki/Gossip_protocol)[^1]. Nodes exchange all the time information with each other, such as updating about new [operations](operations/operations) and [blocks](block).
+* Keep up-to-date the current [context](context) of the node, by applying all operations from the block to the local state. 
+
+## Overview of Protocols 📑
+
+### `/protocols`
+
+You can query the different *protocols the node supports*. You can do it with the following command from your terminal:
+
+
+<Tabs
+  groupId="network"
+  defaultValue="request"
+  values={[
+    { label: 'localhost', value: 'localhost', },
+    { label: 'testnet', value: 'testnet', },
+    { label: 'mainnet', value: 'mainnet', }
+  
+  ]
+}>
+<TabItem value="localhost">
+
+```sh
+curl http://localhost:8732/protocols
+```
+
+
+<Fetch URL= "http://localhost:8732/protocols" />
+
+</TabItem>
+
+<TabItem value="testnet">
+
+```sh
+curl https://testnet-tezos.giganode.io/protocols
+```
+
+
+<Fetch URL= "https://testnet-tezos.giganode.io/protocols" />
+
+
+</TabItem>
+
+<TabItem value="mainnet">
+
+```sh
+curl https://mainnet-tezos.giganode.io/protocols
+```
+<Fetch URL= "https://mainnet-tezos.giganode.io/protocols" />
+
+</TabItem>
+</Tabs>
+
+### `/chains/main/blocks/head`
+
+We are interested in identifying the **current protocol** the node is running. This call is one of the most important ones in getting the current state of the blockchain:
+
+
+
+<Tabs
+  defaultValue="request"
+  values={[
+    { label: 'Request', value: 'request', },
+    { label: 'Response', value: 'response', },
+  
+  ]
+}>
+<TabItem value="request">
+
+```sh
+curl https://mainnet-tezos.giganode.io/chains/main/blocks/head
+```
+
+</TabItem>
+<TabItem value="response">
+
+```json {2}
+{
+    "protocol": "PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9oYsSXRLQEb",
+    "chain_id": "NetXdQprcVkpaWU",
+    "hash": "BLgrPFmCXmVppZADgEMpQ9ppLrM6rrwfTC16RujNz9v94Lakphc",
+    "header": { ...
+    },
+    "metadata": { ...
+    },
+    "operations": [ ...
+    ]
+```
+
+</TabItem>
+</Tabs>
+
+
+
+To further investigate the protocol **PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9oYsSXRLQEb**, we query for that identifier:
+
+```sh
+https://mainnet-tezos.giganode.io/protocols/PsCARTHAGazKbHtnKfLzQg3kms52kSRpgnDY982a9oYsSXRLQEb
+```
+
+:::note Chef's note (clippy)
+We have organized for you all RPC calls of this wiki in a Postman collection.
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/ec1dc80533288e094155)
+::: 
+
+
+[^1]: Interestingly this protocol is also called *epidemic protocol*, because the way peer-to-peer communication is established mimics how a biological virus spreads.

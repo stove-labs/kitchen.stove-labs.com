@@ -10,8 +10,6 @@ We're still working on the contents for the practical part of this workshop,
 however you can already explore the ***sauce-code***[^1] yourself:
 - **[Git repository](https://github.com/stove-labs/workshop-notarization)**
     - [LIGO smart-contracts](https://github.com/stove-labs/workshop-notarization/tree/dev/smart-contracts)
-    - [Typescript SDK](https://github.com/stove-labs/workshop-notarization/tree/dev/sdk)
-    - [React user interface](https://github.com/stove-labs/workshop-notarization/tree/dev/ui)
 
 Please let us know if you've enjoyed your meal!
 :::

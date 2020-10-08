@@ -6,7 +6,7 @@ title: Signatures
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import Mermaid from '@theme/Mermaid';
 
-Public [key cryptography](key-pair) and its digital signatures belong to the building blocks of a blockchain. They are always used when a piece of information needs to be written to the blockchain ledger. So called [transactions](../operations/transaction) carry the instructions to do so, but a digital signature is required to prove that it comes from the owner or authorized entity. In other words, the transaction initiator needs to authorize the action. The [protocol](../protocol) takes care of *validating* or checking of the correctness of the signature. 
+[Public-key cryptography](key-pair) and its digital signatures belong to the building blocks of a blockchain. They are always used when a piece of information needs to be written to the blockchain ledger. So called [transactions](../operations/transaction) carry the instructions to do so, but a digital signature is required to prove that it comes from the owner or authorized entity. In other words, the transaction initiator needs to authorize the action. The [protocol](../protocol) takes care of *validating* or checking of the correctness of the signature. 
 
 Consider that Alice has created two keys, a **secret** and a **public** key. Those are not the same keys, but they are mathematically connected[^1]. She keeps her secret key, as the name suggests, private at all times. She uses it to digitally sign a message (or transaction). Anyone with Alice' pubilc key is able to verify that it was signed with the corresponding secret key. 
 
@@ -18,20 +18,20 @@ graph TD
   signing-->signed["Signed Text"]
   signed-->verifying([verifying])
   subgraph payload
-  original
-  signed
-  verified
+    original
+    signed
+    verified
   end
   verifying-->verified[Verified Text]
   subgraph key-pair
-  secret
-  public
-  
+    secret
+    public
   end
   secret[Secret Key]-->signing
   public[Public Key]-->verifying		
   style key-pair fill:#FFD03B
   style payload fill:#FFD03B
+  click secret,public "${useBaseUrl('docs/knowledge/tezos_protocol/cryptography/key-pair')}"
 `}/>
 </center>
 

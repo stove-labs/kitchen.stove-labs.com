@@ -2,19 +2,22 @@
 id: smart-contract
 title: Overview
 ---
-
 import Mermaid from '@theme/Mermaid';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import useBaseUrl from '@docusaurus/useBaseUrl'
 
-Generally speaking, we think of a **smart contract** as a collection of functions that share and manipulate the same storage. In more detail, it is actually a special type of [account](../tezos_protocol/account). Its address always starts with the letters `KT1` and is also called **originated account**. This name comes from how it is created. It is done by *originating* it from an [*implicit* account](../tezos_protocol/implicit-account). It is essential to understand that a program code is attached to it, written in the Tezos specific language [Michelson](michelson). That code is executed or *invoked*, whenever the originated account receives a transaction. That transaction can also carry *parameters* that is taken as input for the code. This is explained in more detail in the [entrypoints](entrypoints) article. 
+Generally speaking, we think of a **smart contract** as a collection of functions that share and manipulate the same storage. At closer look, it is actually a special type of [account](../tezos_protocol/account) and has therefore an address. It always starts with the letters `KT1` and is also called **originated account**. This name comes from how it is created, by *originating* it from an *implicit* account. It is essential to understand that a program code is attached to it, written in the Tezos specific language [Michelson](michelson). To start or *invoke* the code, the account needs to receive a transaction. Next to the cryptocurrency ꜩ, the transaction can also carry additional *parameters*. How the parameters find their way to the function is explained in more detail in the [entrypoints](entrypoints) article. 
 
-The [notarization workshop](../learn/workshops/notarization/theory/opportunities-in-a-digital-age) provides a lot of theoretical background in why and how smart contracts can  revolutionize fundamental processes of our society. Technically speaking, a smart contract is a decentalized code that cannot be altered or stopped. The important aspect is that not only its storage, but also execution is decentralized and verifiable by the public.
+The [notarization workshop](../learn/workshops/notarization/theory/opportunities-in-a-digital-age) provides a lot of theoretical background in why and how smart contracts can revolutionize fundamental processes of our modern society. Technically speaking, a smart contract is a decentalized code that can't be altered or stopped. The important aspect is that not only its storage, but also **execution is decentralized** and **verifiable** by the public. This makes the program code **practically tamperproof**.
 
-
+<center>
 <Mermaid chart={`
 graph TD
   account["Implicit Account<br>tz1...<br>tz2...<br>tz3..."]-->|sends|operation["Operation"]
   account-->|owns|tez["ꜩ"]
   smart-->|owns|tez
+  operation-->more["..."]
   operation-->transaction["Transaction"]
   transaction-->|contains|parameter
   transaction-->|invokes|michelson["Michelson code"]
@@ -25,37 +28,58 @@ graph TD
   smart-->|has|storage
   smart-->|has|michelson
   michelson-->|defines|parameter
-  style tez fill: #536DFE,stroke-width:1px,stroke:#333
-  style account fill:#FFD03B,stroke:#000000
-  style smart fill:#FFD03B,stroke:#000000
-  style michelson fill:#F86D70,stroke:#000000
-  style parameter fill:#F86D70,stroke:#000000
-  style storage fill:#F86D70,stroke:#000000
   transaction-->|targets|smart
   account-->|manages|smart
+  class account,smart nodeWarning
+  class tez nodeTezos
+  class michelson,parameter,storage nodeDanger
+  click michelson,parameter,storage "${useBaseUrl('docs/knowledge/smart_contract/michelson')}"
+  click operation,transaction,origination,more "${useBaseUrl('docs/knowledge/tezos_protocol/operations/operations')}"
+  click account "${useBaseUrl('docs/knowledge/tezos_protocol/account')}"
 `}/>
+</center>
+
+:::note Chef's tip 👨‍🍳
+You can interact with the diagram by clicking on the node. It will take you to the relevant article.
+:::
+
 
 ## Example contract declining incoming ꜩ
 
-Smart contract code opens up almost endless possibilties in customizing the behaviour of an originated account. For example, the business logic might not require the transfer of ꜩ. That's why it is *best practice* for you to implement a security mechanism that *does not* allow others to transfer ꜩ to your contract. Curious how easy it is too implement this? Below we see an example written in [ReasonLIGO](https://www.ligolang.org) that compiles down to [Michelson](michelson).
+**Smart contract** code opens up almost **endless possibilties** in customizing the behaviour of an originated account. In this **example**, the program code is not supposed to handle cryptocurrency and therefore can't process receiving ꜩ. That's why it is *best practice* for you to implement a **security mechanism** that **blocks the transfer of ꜩ to your contract**. 
 
-```reason
-// ReasonLIGO
+Curious how easy it is too implement this logic? Below we can see the solution written in the high-level language [ReasonLIGO](https://www.ligolang.org). This code gets compiled to the lower-level language Michelson, which can be processed by the Tezos blockchain. Despite being bytecode, it is human readable, which sets it apart from other blockchain environments. After deploying this code to an originated account, you have customized the behavior of the account and it will automatically decline transactions carrying any ꜩ.
+
+<Tabs
+  defaultValue="reason"
+  values={[
+    { label: 'ReasonLIGO', value: 'reason', },
+    { label: 'Michelson', value: 'michelson', },
+  
+  ]
+}>
+<TabItem value="reason">
+
+```reason 
 type parameter = unit;
 type storage = unit;
 
 let main = ((action, store): (parameter, storage)) : (list (operation), storage) => {
   // Check for ꜩ in the transaction that also contains the parameter
+  // highlight-start
   if (Tezos.amount > 0tez) {
     (failwith("This contract does not accept tokens."): (list (operation), storage)); }
+  // highlight-end  
   else { 
     // here goes the business logic of the smart contract
       (([] : list (operation)), store); };
 };
 ```
 
+</TabItem>
+<TabItem value="michelson">
+
 ```reason
-# Michelson code
 { parameter unit ;
   storage unit ;
   code { PUSH mutez 0 ;
@@ -66,3 +90,14 @@ let main = ((action, store): (parameter, storage)) : (list (operation), storage)
             { DUP ; CDR ; NIL operation ; PAIR } ;
          DIP { DROP } } }
 ```
+
+</TabItem>
+</Tabs>
+
+
+
+
+
+
+
+

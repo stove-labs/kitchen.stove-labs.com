@@ -4,7 +4,7 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
+ @import "animate.css"; 
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #536DFE;
@@ -34,7 +34,7 @@
 }
 
 .docSidebarContainer_node_modules-\@docusaurus-theme-classic-src-theme-DocPage- {
-  top: calc(-1 * var(--ifm-navbar-height) + var(--ifm-navbar-height)) !important;
+  top: calc(-0.70 * var(--ifm-navbar-height) + var(--ifm-navbar-height)) !important;
 }
 .sidebar_node_modules-\@docusaurus-theme-classic-src-theme-DocSidebar- {
   padding-top: 0px !important;
